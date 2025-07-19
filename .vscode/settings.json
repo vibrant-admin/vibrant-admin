@@ -1,19 +1,6 @@
 {
   "json.schemaDownload.enable": false,
 
-  // Enable file nesting in the explorer
-  "explorer.fileNesting.enabled": true,
-  "explorer.fileNesting.patterns": {
-    ".env": ".env*",
-    ".gitignore": ".git*",
-    ".lintstagedrc": "",
-    "package.json": "pnpm-*.yaml",
-    ".node-version": ".*rc, .*rc.js",
-    ".eslintcache": ".*cache",
-    "vite.config.ts": "*.config.ts, *.config.js, .*config",
-    "README.md": "LICENSE"
-  },
-
   // Use ESLint for linting
   "eslint.useFlatConfig": true,
 

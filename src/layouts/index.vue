@@ -9,10 +9,10 @@ const isLink = computed(() => !!route.meta.link)
 </script>
 
 <template>
-  <div class="flex-col flex w-[100vw] relative h-[100vh]">
+  <div class="relative h-[100vh] w-[100vw] flex flex-col">
     <Header />
     <div class="flex flex-auto">
-      <div class="w-[250px] h-[100%] bg-red-500">
+      <div class="h-[100%] w-[250px] bg-red-500">
         <Sidebar />
       </div>
       <div>

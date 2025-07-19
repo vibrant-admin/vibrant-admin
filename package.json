@@ -10,8 +10,10 @@
     "build-only": "vite build",
     "lint": "run-p lint:tsc lint:eslint lint:stylelint",
     "lint:tsc": "vue-tsc --build",
-    "lint:eslint": "eslint . --cache --fix",
-    "lint:stylelint": "stylelint \"src/**/*.{css,scss,vue}\" --cache --fix",
+    "lint:eslint": "eslint . --fix",
+    "lint:stylelint": "stylelint \"src/**/*.{css,scss,vue}\" --fix",
+    "taze": "taze minor -wIr",
+    "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
     "cz": "czg"
   },
@@ -24,6 +26,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.17.0",
+    "@iconify/json": "^2.2.359",
     "@stylistic/stylelint-config": "^2.0.0",
     "@tsconfig/node22": "^22.0.2",
     "@types/node": "^24.0.15",
@@ -48,6 +51,7 @@
     "stylelint-config-standard-scss": "^15.0.1",
     "stylelint-config-standard-vue": "^1.0.0",
     "stylelint-scss": "^6.12.1",
+    "taze": "^19.1.0",
     "typescript": "~5.8.3",
     "unocss": "^66.3.3",
     "unplugin-auto-import": "^19.3.0",
@@ -55,7 +59,7 @@
     "vite": "^7.0.5",
     "vite-plugin-env-parse": "^1.0.15",
     "vite-plugin-vue-devtools": "^7.7.7",
-    "vue-tsc": "^2.2.12"
+    "vue-tsc": "^3.0.3"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged",
