@@ -13,7 +13,7 @@ function goBack() {
       <h1 class="m-0 text-6xl font-sans">
         403
       </h1>
-      <div class="desc text-secondary-foreground/50 mx-0 text-xl">
+      <div class="desc mx-0 text-xl text-secondary-foreground/50">
         抱歉，你无权访问该页面
       </div>
       <div>

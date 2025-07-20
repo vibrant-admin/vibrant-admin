@@ -77,6 +77,7 @@ declare global {
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouteStore: typeof import('../store/modules/route')['useRouteStore']
   const useRouter: typeof import('vue-router')['useRouter']
+  const useSettingStore: typeof import('../store/modules/setting')['useSettingStore']
   const useSlots: typeof import('vue')['useSlots']
   const useTemplateRef: typeof import('vue')['useTemplateRef']
   const useUserStore: typeof import('../store/modules/user')['useUserStore']
