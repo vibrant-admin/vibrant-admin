@@ -8,6 +8,9 @@ const title = import.meta.env.VITE_SITE_TITLE
 <template>
   <header class="border-b border-border">
     <div class="flex items-center gap-5">
+      <div class="h-10 w-10">
+        <VIcon name="logo" />
+      </div>
       <h1 class="text-2xl font-bold">
         {{ title }}
       </h1>

@@ -23,7 +23,7 @@ export default defineConfig({
       legacyColorSpace: true,
     }),
     {
-      name: 'unocss-preset-shadcn',
+      name: 'preset-themes',
       preflights: [
         {
           getCSS: () => {
