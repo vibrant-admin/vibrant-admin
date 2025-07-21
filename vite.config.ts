@@ -7,9 +7,11 @@ import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
+import AppLoading from 'vite-plugin-app-loading'
 import { compression } from 'vite-plugin-compression2'
 import { envParse } from 'vite-plugin-env-parse'
 import vueDevTools from 'vite-plugin-vue-devtools'
+import svgLoader from 'vite-svg-loader'
 
 export default defineConfig({
   plugins: [
@@ -36,6 +38,7 @@ export default defineConfig({
       dts: 'src/types/components.d.ts',
       dirs: ['src/components'],
     }),
+    svgLoader(),
     // https://github.com/yue1123/vite-plugin-env-parse
     envParse({
       dtsPath: 'src/types/env.d.ts',
@@ -44,6 +47,7 @@ export default defineConfig({
     compression({
       algorithms: ['gzip'],
     }),
+    AppLoading('loading.html'),
   ],
   resolve: {
     alias: {

@@ -4,7 +4,7 @@ export const useSettingStore = defineStore('setting', () => {
   // 所有设置
   const settings = ref<RecursiveRequired<Settings.all>>({
     app: {
-      colorScheme: 'OS',
+      colorScheme: 'light',
       theme: 'default',
     },
   })

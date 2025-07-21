@@ -5,7 +5,7 @@ defineOptions({
 </script>
 
 <template>
-  <div>
+  <VPage>
     字典管理
-  </div>
+  </VPage>
 </template>

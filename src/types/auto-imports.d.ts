@@ -73,6 +73,7 @@ declare global {
   const useKeepAliveStore: typeof import('../store/modules/keepAlive')['useKeepAliveStore']
   const useLink: typeof import('vue-router')['useLink']
   const useModel: typeof import('vue')['useModel']
+  const useNotificationStore: typeof import('../store/modules/notification')['useNotificationStore']
   const usePlugin: typeof import('../slots/index')['usePlugin']
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouteStore: typeof import('../store/modules/route')['useRouteStore']

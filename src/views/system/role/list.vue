@@ -5,7 +5,7 @@ defineOptions({
 </script>
 
 <template>
-  <div>
+  <VPage>
     角色管理
-  </div>
+  </VPage>
 </template>

@@ -5,7 +5,10 @@
     "paths": {
       "@/*": ["./src/*"],
       "#/*": ["./src/types/*"]
-    }
+    },
+    "types": [
+      "vite-plugin-app-loading/client"
+    ]
   },
   "include": ["src/**/*"],
   "exclude": ["src/**/__tests__/*"]

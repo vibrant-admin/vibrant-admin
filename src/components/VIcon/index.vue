@@ -1,23 +1,34 @@
 <script setup lang="ts">
+import type { HTMLAttributes } from 'vue'
+import { classMerge } from '@/utils'
+
 defineOptions({
   name: 'SvgIcon',
 })
-const props = withDefaults(defineProps<Props>(), {
-  prefix: 'icon',
-  color: '#333',
-})
+const props = defineProps<Props>()
 
 interface Props {
-  prefix?: string
   name: string
-  color?: string
+  class?: HTMLAttributes['class']
 }
 
-const symbolId = computed(() => `#${props.prefix}-${props.name}`)
+const svgComps = import.meta.glob('@/assets/icons/*.svg', {
+  eager: true, // 立即加载
+})
+
+const iconType = computed(() => {
+  if (/i-[^:]+:[^:]+/.test(props.name)) {
+    return 'unocss'
+  }
+  else {
+    return 'svg'
+  }
+})
 </script>
 
 <template>
-  <svg aria-hidden="true" width="24px" height="24px">
-    <use :href="symbolId" :fill="color" />
-  </svg>
+  <i :class="classMerge('relative size-[1em] flex-inline items-center justify-center fill-current leading-[1em]', props.class)">
+    <i v-if="iconType === 'unocss'" class="flex-none" :class="props.name" />
+    <component :is="svgComps[`/src/assets/icons/${props.name}.svg`]" v-if="iconType === 'svg'" class="flex-none" />
+  </i>
 </template>
