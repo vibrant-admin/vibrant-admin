@@ -3,7 +3,6 @@ import { defineConfig, presetAttributify, presetIcons, presetWind4, transformerA
 import themes from './src/assets/themes'
 
 export default defineConfig({
-
   presets: [
     presetWind4({
       preflights: {

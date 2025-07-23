@@ -33,5 +33,9 @@ header {
   justify-content: space-between;
   height: 60px;
   padding: 0 20px;
+
+  .add {
+    font-size: 20px;
+  }
 }
 </style>

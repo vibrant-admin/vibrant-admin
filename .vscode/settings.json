@@ -21,7 +21,6 @@
     "css",
     "postcss",
     "scss",
-    "html",
     "vue"
   ]
 }
