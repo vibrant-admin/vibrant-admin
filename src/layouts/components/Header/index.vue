@@ -28,8 +28,8 @@ const title = import.meta.env.VITE_APP_TITLE
 
 <style scoped>
 header {
-  align-items: center;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   height: 60px;
   padding: 0 20px;
