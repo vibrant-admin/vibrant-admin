@@ -9,19 +9,19 @@ const isLink = computed(() => !!route.meta.link)
 </script>
 
 <template>
-  <div class="relative h-[100vh] w-[100vw] flex flex-col">
-    <div class="h-[60px] w-full border-b border-border bg-background text-foreground transition-colors">
+  <div class="flex flex-col h-[100vh] w-[100vw] relative">
+    <div class="text-foreground border-b border-border bg-background h-[60px] w-full transition-colors">
       <Header />
     </div>
     <div class="flex flex-1 overflow-hidden">
-      <div class="h-[100%] w-[250px] flex-none border-r border-border transition-colors">
+      <div class="border-r border-border flex-none h-[100%] w-[250px] transition-colors">
         <Sidebar />
       </div>
-      <div class="w-0 flex flex-auto flex-col bg-[--main-area-bg] transition-colors">
-        <div class="border-b border-border p-1 transition-colors">
+      <div class="bg-[--main-area-bg] flex flex-auto flex-col w-0 transition-colors">
+        <div class="p-1 border-b border-border transition-colors">
           <Tabbar />
         </div>
-        <div class="flex-1 overflow-auto p-4">
+        <div class="p-4 flex-1 overflow-auto">
           <RouterView v-slot="{ Component }">
             <Transition mode="out-in">
               <KeepAlive :include="keepAliveStore.list">

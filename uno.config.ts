@@ -1,29 +1,24 @@
 import { entriesToCss, toArray } from '@unocss/core'
-import presetLegacyCompat from '@unocss/preset-legacy-compat'
-import { defineConfig, presetAttributify, presetIcons, presetTypography, presetWind3, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
+import { defineConfig, presetAttributify, presetIcons, presetWind4, transformerAttributifyJsx, transformerDirectives, transformerVariantGroup } from 'unocss'
 import themes from './src/assets/themes'
 
 export default defineConfig({
+
   presets: [
-    presetWind3(),
-    // 支持属性模式
-    presetAttributify(),
-    // 打印排版相关预设
-    presetTypography(),
-    // 支持图标字体
-    presetIcons({
-      extraProperties: {
-        'display': 'inline-block',
-        'vertical-align': 'middle',
+    presetWind4({
+      preflights: {
+        reset: true,
       },
     }),
-    // 兼容旧版 CSS 变量和颜色函数
-    presetLegacyCompat({
-      commaStyleColorFunction: true,
-      legacyColorSpace: true,
+    // 支持属性模式
+    presetAttributify(),
+    // 支持图标字体
+    presetIcons({
+      scale: 1.2,
+      warn: true,
     }),
     {
-      name: 'preset-themes',
+      name: 'preset-theme',
       preflights: [
         {
           getCSS: () => {
@@ -33,8 +28,8 @@ export default defineConfig({
                 const css = entriesToCss(Object.entries(themes[themeName][colorScheme] as Record<string, string>))
                 const roots = toArray(
                   colorScheme === 'light'
-                    ? `[data-theme="${themeName}"]`
-                    : `html.dark [data-theme="${themeName}"], [data-theme="${themeName}"] .dark`,
+                    ? `html[data-theme="${themeName}"]`
+                    : `html.dark[data-theme="${themeName}"]`,
                 )
                 returnCss.push(roots.map(root => `${root}{color-scheme:${colorScheme};${css}}`).join(''))
               })
@@ -46,16 +41,16 @@ export default defineConfig({
       ],
       theme: {
         colors: {
-          border: 'var(--border)',
-          background: 'var(--background)',
-          foreground: 'var(--foreground)',
+          border: 'hsl(var(--border))',
+          background: 'hsl(var(--background))',
+          foreground: 'hsl(var(--foreground))',
           primary: {
-            DEFAULT: 'var(--primary)',
-            foreground: 'var(--primary-foreground)',
+            DEFAULT: 'hsl(var(--primary))',
+            foreground: 'hsl(var(--primary-foreground))',
           },
           secondary: {
-            DEFAULT: 'var(--secondary)',
-            foreground: 'var(--secondary-foreground)',
+            DEFAULT: 'hsl(var(--secondary))',
+            foreground: 'hsl(var(--secondary-foreground))',
           },
         },
       },
@@ -66,8 +61,6 @@ export default defineConfig({
     transformerDirectives(),
     // 支持变体组
     transformerVariantGroup(),
-    // 支持编译类名
-    transformerCompileClass(),
     // 支持 JSX 属性模式
     transformerAttributifyJsx(),
   ],

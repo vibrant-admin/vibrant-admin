@@ -56,7 +56,7 @@ export const useSettingStore = defineStore('setting', () => {
 
   // 主题变更
   watch(() => settings.value.app.theme, () => {
-    document.body.setAttribute('data-theme', settings.value.app.theme)
+    document.documentElement.setAttribute('data-theme', settings.value.app.theme)
   }, { immediate: true })
 
   return {

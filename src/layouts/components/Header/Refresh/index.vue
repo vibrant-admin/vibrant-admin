@@ -11,7 +11,7 @@ function handleRefresh() {
 </script>
 
 <template>
-  <div class="flex cursor-pointer items-center rounded bg-transparent p-2 text-lg font-bold transition-colors hover:bg-secondary" @click.exact="handleRefresh">
+  <div class="text-lg font-bold p-2 rounded bg-transparent flex cursor-pointer transition-colors items-center hover:bg-secondary" @click.exact="handleRefresh">
     <VIcon
       name="i-material-symbols:refresh-rounded" :class="{
         animation: isAnimating,
@@ -21,7 +21,7 @@ function handleRefresh() {
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .animation {
   animation: rotate 1s;
 }

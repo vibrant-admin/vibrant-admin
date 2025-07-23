@@ -18,7 +18,7 @@ function onClick() {
 <template>
   <div class="breadcrumb-item group flex items-center">
     <span
-      class="text flex items-center bg-secondary text-sm text-secondary-foreground opacity-60 group-last:opacity-100"
+      class="text text-sm text-secondary-foreground bg-secondary opacity-60 flex items-center group-last:opacity-100"
       :class="{
         'cursor-pointer transition-opacity hover-opacity-100': !!props.to,
       }" @click="onClick"
@@ -28,13 +28,13 @@ function onClick() {
   </div>
 </template>
 
-<style lang="scss">
+<style scoped>
 .breadcrumb-item {
   .text {
     padding: 6px 16px;
     clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%, 8px 50%);
 
-    [dir="rtl"] & {
+    [dir='rtl'] & {
       clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 50%, 100% 100%, 8px 100%, 0 50%);
     }
   }
@@ -44,7 +44,7 @@ function onClick() {
     border-radius: 6px 0 0 6px;
     clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%);
 
-    [dir="rtl"] & {
+    [dir='rtl'] & {
       border-radius: 0 6px 6px 0;
       clip-path: polygon(8px 0, 100% 0, 100% 100%, 8px 100%, 0 50%);
     }
@@ -55,7 +55,7 @@ function onClick() {
     border-radius: 0 6px 6px 0;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 8px 50%);
 
-    [dir="rtl"] & {
+    [dir='rtl'] & {
       border-radius: 6px 0 0 6px;
       clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 50%, 100% 100%, 0 100%);
     }

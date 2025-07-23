@@ -10,13 +10,13 @@ notificationStore.init()
 
 <template>
   <ElBadge :value="notificationStore.total" :offset="[-8, 8]" :is-dot="notificationStore.total > 9" :show-zero="false">
-    <div class="animation flex cursor-pointer items-center rounded bg-transparent p-2 text-lg font-bold transition-colors hover:bg-secondary">
+    <div class="animation text-lg font-bold p-2 rounded bg-transparent flex cursor-pointer transition-colors items-center hover:bg-secondary">
       <VIcon name="i-material-symbols:notifications-outline-rounded" class="icon" />
     </div>
   </ElBadge>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .animation {
   .icon {
     transform-origin: center top;

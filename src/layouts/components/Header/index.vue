@@ -5,12 +5,12 @@ import Fullscreen from './Fullscreen/index.vue'
 import Notification from './Notification/index.vue'
 import Refresh from './Refresh/index.vue'
 
-const title = import.meta.env.VITE_SITE_TITLE
+const title = import.meta.env.VITE_APP_TITLE
 </script>
 
 <template>
   <header>
-    <div class="flex items-center gap-5">
+    <div class="flex gap-5 items-center">
       <VIcon name="logo" class="size-3em" />
       <h1 class="text-2xl font-bold">
         {{ title }}
@@ -26,10 +26,10 @@ const title = import.meta.env.VITE_SITE_TITLE
   </header>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 header {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;
   height: 60px;
   padding: 0 20px;

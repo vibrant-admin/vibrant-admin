@@ -1,51 +1,14 @@
 {
   "json.schemaDownload.enable": false,
-
   // Use ESLint for linting
   "eslint.useFlatConfig": true,
-
   // Disable the default formatter, use eslint instead
   "prettier.enable": false,
   "editor.formatOnSave": false,
-
   // Auto fix
   "editor.codeActionsOnSave": {
+    "source.fixAll": "never",
     "source.fixAll.eslint": "explicit",
-    "source.fixAll.stylelint": "explicit",
     "source.organizeImports": "never"
-  },
-
-  // Enable stylelint for all supported languages
-  "stylelint.validate": [
-    "css",
-    "postcss",
-    "scss",
-    "vue"
-  ],
-
-  // Enable eslint for all supported languages
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "vue",
-    "html",
-    "markdown",
-    "json",
-    "json5",
-    "jsonc",
-    "yaml",
-    "toml",
-    "xml",
-    "gql",
-    "graphql",
-    "astro",
-    "svelte",
-    "css",
-    "less",
-    "scss",
-    "pcss",
-    "postcss"
-  ]
+  }
 }

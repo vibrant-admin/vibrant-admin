@@ -1,18 +1,18 @@
 export default {
   default: {
     light: {
-      '--border': '#dcdfe6',
-      '--background': '#fff',
-      '--foreground': '#000',
-      '--primary': '#2762a4',
-      '--primary-foreground': '#fff',
-      '--secondary': '#e5e7eb',
-      '--secondary-foreground': '#000',
-      '--main-area-bg': '#f2f2f2',
+      '--border': '0 0 80%',
+      '--background': '0 0 100%',
+      '--foreground': '0 0 0%',
+      '--primary': '200 50% 50%',
+      '--primary-foreground': '0 0 0%',
+      '--secondary': '0 0 80%',
+      '--secondary-foreground': '0 0 20%',
+      '--main-area-bg': '0 0 90%',
     },
     dark: {
-      '--border': '#4c4d4f',
-      '--background': '#000',
+      '--border': '0 0 20%',
+      '--background': '0 0 0%',
       '--foreground': '#fff',
       '--primary': '#529ef4',
       '--primary-foreground': '#fff',

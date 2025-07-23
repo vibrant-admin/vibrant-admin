@@ -50,7 +50,9 @@ function pathCompile(path: string) {
 
 <style scoped>
 .breadcrumb-enter-active {
-  transition: transform 0.3s, opacity 0.3s;
+  transition:
+    transform 0.3s,
+    opacity 0.3s;
 }
 
 .breadcrumb-enter-from {

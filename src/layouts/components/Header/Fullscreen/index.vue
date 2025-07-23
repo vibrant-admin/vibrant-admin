@@ -9,7 +9,7 @@ const { isFullscreen, toggle } = useFullscreen()
 </script>
 
 <template>
-  <div class="flex cursor-pointer items-center rounded bg-transparent p-2 text-lg font-bold transition-colors hover:bg-secondary" @click.exact="toggle">
+  <div class="text-lg font-bold p-2 rounded bg-transparent flex cursor-pointer transition-colors items-center hover:bg-secondary" @click.exact="toggle">
     <VIcon :name="isFullscreen ? 'i-material-symbols:fullscreen-exit-rounded' : 'i-material-symbols:fullscreen-rounded'" />
   </div>
 </template>
