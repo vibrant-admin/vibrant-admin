@@ -45,6 +45,7 @@ export const useRouteStore = defineStore('route', () => {
 
   return {
     isGenerate,
+    routesRaw,
     routes,
     systemRoutes,
     generateRoutesAtFront,

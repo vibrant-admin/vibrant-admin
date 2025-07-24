@@ -4,7 +4,7 @@ export default {
   meta: {
     title: '用户管理',
     icon: 'i-material-symbols:user-attributes-outline-rounded',
-    // auth: 'system.user.browse',
+    auth: 'system.user.browse',
     auths: [
       { name: '预览', value: 'system.user.browse' },
       { name: '创建', value: 'system.user.create' },

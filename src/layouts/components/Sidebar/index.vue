@@ -1,14 +1,11 @@
 <script setup lang="ts">
+import Menu from '../Menu/index.vue'
 
+const menuStore = useMenuStore()
 </script>
 
 <template>
-  <div>
-    <RouterLink to="/system/user">
-      用户管理
-    </RouterLink>
-    <RouterLink to="/system/role">
-      角色管理
-    </RouterLink>
+  <div class="h-full w-full overflow-x-hidden overflow-y-auto">
+    <Menu :data="menuStore.allMenus" />
   </div>
 </template>
