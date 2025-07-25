@@ -3,6 +3,10 @@ import { resolveRoutePath } from '@/utils'
 
 export const useMenuStore = defineStore('menu', () => {
   const routeStore = useRouteStore()
+  const { auth } = useAuth()
+
+  // 当前激活菜单
+  const defaultActive = ref<string>('')
 
   // 将路由转换为导航菜单
   function convertRouteToMenu(routes: RouteRecordRaw[], basePath = '') {
@@ -32,7 +36,6 @@ export const useMenuStore = defineStore('menu', () => {
   }
 
   // 根据权限过滤菜单
-  const { auth } = useAuth()
   function filterMenus(menus: any[]) {
     return menus.filter((menu) => {
       if (!auth(menu.meta?.auth ?? ''))
@@ -52,7 +55,30 @@ export const useMenuStore = defineStore('menu', () => {
     return filterMenus(convertRouteToMenu(routeStore.routesRaw))
   })
 
+  // 次导航第一层最深路径
+  const firstDeepestPath = computed(() => {
+    const findDeepestPath = (menus: any[], currentPath: string = ''): string => {
+      let deepestPath = currentPath
+      for (const menu of menus) {
+        if (menu.children && menu.children.length > 0) {
+          const childPath = findDeepestPath(menu.children, menu.path)
+          if (childPath.length > deepestPath.length) {
+            deepestPath = childPath
+          }
+        }
+        else if (menu.path && menu.path.length > deepestPath.length) {
+          deepestPath = menu.path
+        }
+      }
+      return deepestPath
+    }
+
+    return findDeepestPath(allMenus.value)
+  })
+
   return {
+    defaultActive,
     allMenus,
+    firstDeepestPath,
   }
 })

@@ -4,7 +4,7 @@ export default {
   meta: {
     title: '字典管理',
     icon: 'i-material-symbols:user-attributes-outline-rounded',
-    auth: 'system.dict.browse',
+    // auth: 'system.dict.browse',
     auths: [
       { name: '预览', value: 'system.dict.browse' },
       { name: '创建', value: 'system.dict.create' },
@@ -21,7 +21,7 @@ export default {
         title: '字典列表',
         menu: false,
         cache: true,
-        auth: 'system.dict.browse',
+        // auth: 'system.dict.browse',
       },
     },
   ],

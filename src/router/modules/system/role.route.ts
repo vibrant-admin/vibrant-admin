@@ -4,7 +4,7 @@ export default {
   meta: {
     title: '角色管理',
     icon: 'i-material-symbols:user-attributes-outline-rounded',
-    auth: 'system.role.browse',
+    // auth: 'system.role.browse',
     auths: [
       { name: '预览', value: 'system.role.browse' },
       { name: '创建', value: 'system.role.create' },
