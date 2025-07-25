@@ -21,35 +21,32 @@ export default defineConfig({
       preflights: [
         {
           getCSS: () => {
-            const returnCss: string[] = []
-            Object.keys(themes).forEach((themeName) => {
-              Object.keys(themes[themeName]).forEach((colorScheme) => {
-                const css = entriesToCss(Object.entries(themes[themeName][colorScheme] as Record<string, string>))
+            return Object.entries(themes).map(([themeName, colors]) => {
+              return Object.entries(colors).map(([colorScheme, colorValues]) => {
+                const css = entriesToCss(Object.entries(colorValues as Record<string, string>))
                 const roots = toArray(
                   colorScheme === 'light'
                     ? `html[data-theme="${themeName}"]`
                     : `html.dark[data-theme="${themeName}"]`,
                 )
-                returnCss.push(roots.map(root => `${root}{color-scheme:${colorScheme};${css}}`).join(''))
-              })
-            })
-
-            return returnCss.join('\n')
+                return roots.map(root => `${root}{color-scheme:${colorScheme};${css}}`).join('')
+              }).join('\n')
+            }).join('\n')
           },
         },
       ],
       theme: {
         colors: {
-          border: 'hsl(var(--border))',
-          background: 'hsl(var(--background))',
-          foreground: 'hsl(var(--foreground))',
+          border: 'var(--border)',
+          background: 'var(--background)',
+          foreground: 'var(--foreground)',
           primary: {
-            DEFAULT: 'hsl(var(--primary))',
-            foreground: 'hsl(var(--primary-foreground))',
+            DEFAULT: 'var(--primary)',
+            foreground: 'var(--primary-foreground)',
           },
           secondary: {
-            DEFAULT: 'hsl(var(--secondary))',
-            foreground: 'hsl(var(--secondary-foreground))',
+            DEFAULT: 'var(--secondary)',
+            foreground: 'var(--secondary-foreground)',
           },
         },
       },
@@ -62,5 +59,8 @@ export default defineConfig({
     transformerVariantGroup(),
     // 支持 JSX 属性模式
     transformerAttributifyJsx(),
+  ],
+  configDeps: [
+    'src/assets/themes.ts',
   ],
 })
