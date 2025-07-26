@@ -23,5 +23,6 @@ declare module 'vue' {
     VIcon: typeof import('./../components/VIcon/index.vue')['default']
     VNotAllowed: typeof import('./../components/VNotAllowed/index.vue')['default']
     VPage: typeof import('./../components/VPage/index.vue')['default']
+    VXScroll: typeof import('./../components/VXScroll/index.vue')['default']
   }
 }

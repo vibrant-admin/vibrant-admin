@@ -18,7 +18,7 @@ const isLink = computed(() => !!route.meta.link)
         <Sidebar />
       </div>
       <div class="bg-[--main-area-bg] flex flex-auto flex-col w-0 transition-colors">
-        <div class="p-1 border-b border-border transition-colors">
+        <div class="p-1 border-b border-border h-[48px] transition-colors">
           <Tabbar />
         </div>
         <div class="p-4 flex-1 overflow-auto">
