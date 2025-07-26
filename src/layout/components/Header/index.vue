@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Breadcrumb from './Breadcrumb/index.vue'
 import ColorScheme from './ColorScheme/index.vue'
+import Favorites from './Favorites/index.vue'
 import Fullscreen from './Fullscreen/index.vue'
 import Notification from './Notification/index.vue'
 import Refresh from './Refresh/index.vue'
@@ -18,6 +19,7 @@ const title = import.meta.env.VITE_APP_TITLE
       <Breadcrumb />
     </div>
     <div class="text-foreground flex gap-3 items-center">
+      <Favorites />
       <Notification />
       <Fullscreen />
       <Refresh />

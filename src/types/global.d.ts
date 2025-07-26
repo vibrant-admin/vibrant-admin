@@ -29,3 +29,12 @@ export declare namespace Settings {
     app?: app
   }
 }
+
+// 收藏夹
+export declare namespace Favorites {
+  interface recordRaw {
+    fullPath: string // 路由的完整路径
+    title: string // 路由的标题
+    icon?: string // 路由的图标
+  }
+}
