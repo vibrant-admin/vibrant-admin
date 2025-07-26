@@ -3,7 +3,7 @@ import RoleRoute from './system/role.route'
 import UserRoute from './system/user.route'
 
 function Layout() {
-  return import('@/layouts/index.vue')
+  return import('@/layout/index.vue')
 }
 export default {
   path: '/system',

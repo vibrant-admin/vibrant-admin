@@ -8,7 +8,6 @@ function setupRoutes(router: Router) {
     const userStore = useUserStore()
     const routeStore = useRouteStore()
     const menuStore = useMenuStore()
-
     // 是否已登录
     if (userStore.isLogin) {
       // 是否已根据权限动态生成并注册路由
@@ -18,7 +17,7 @@ function setupRoutes(router: Router) {
 
         // 如果已登录状态下，进入登录页会强制跳转第一个模块
         if (to.name === 'login') {
-          next('/')
+          next(menuStore.firstDeepestPath)
         }
         // 正常访问
         else {
@@ -47,7 +46,7 @@ function setupRoutes(router: Router) {
           })
         }
         catch {
-          //  userStore.logout()
+          // userStore.logout()
         }
 
         // 生成路由后，重新进入当前路由

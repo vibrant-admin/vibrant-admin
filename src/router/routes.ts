@@ -26,7 +26,7 @@ const constantRoutes = [
 const systemRoutes: RouteRecordRaw[] = [
   {
     path: '/',
-    component: () => import('@/layouts/index.vue'),
+    component: () => import('@/layout/index.vue'),
     meta: {
       breadcrumb: false,
     },
