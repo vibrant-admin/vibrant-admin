@@ -36,7 +36,7 @@ const systemRoutes: RouteRecordRaw[] = [
         component: () => import('@/views/index.vue'),
         meta: {
           title: '首页',
-          icon: 'i-ant-design:home-twotone',
+          icon: 'i-ri-home-2-line',
           breadcrumb: false,
         },
       },

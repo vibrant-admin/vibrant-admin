@@ -11,6 +11,7 @@ export default {
   name: 'system',
   meta: {
     title: '系统管理',
+    icon: 'i-ri-settings-4-line',
     // auth: 'system.role.browse',
   },
   children: [

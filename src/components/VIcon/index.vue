@@ -17,7 +17,7 @@ const svgComps = import.meta.glob('@/assets/icons/*.svg', {
 })
 
 const iconType = computed(() => {
-  if (/i-[^:]+:[^:]+/.test(props.name)) {
+  if (props.name.startsWith('i-')) {
     return 'unocss'
   }
   else {

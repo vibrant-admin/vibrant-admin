@@ -10,8 +10,8 @@ notificationStore.init()
 
 <template>
   <ElBadge :value="notificationStore.total" :offset="[-8, 8]" :is-dot="notificationStore.total > 9" :show-zero="false">
-    <div class="animation text-lg font-bold p-2 rounded bg-transparent flex cursor-pointer transition-colors items-center hover:bg-secondary">
-      <VIcon name="i-material-symbols:notifications-outline-rounded" class="icon" />
+    <div class="animation text-lg font-bold p-2 rounded flex cursor-pointer items-center hover:bg-secondary">
+      <VIcon name="i-ri-notification-4-line" class="icon" />
     </div>
   </ElBadge>
 </template>

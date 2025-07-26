@@ -16,16 +16,8 @@ export const useMenuStore = defineStore('menu', () => {
         meta: {
           title: item?.meta?.title,
           icon: item?.meta?.icon,
-          activeIcon: item?.meta?.activeIcon,
-          defaultOpened: item?.meta?.defaultOpened,
-          alwaysOpened: item?.meta?.alwaysOpened,
           auth: item?.meta?.auth,
           menu: item?.meta?.menu,
-          badge: item?.meta?.badge,
-          badgeVariant: item?.meta?.badgeVariant,
-          newWindow: item?.meta?.newWindow,
-          link: item?.meta?.link,
-          query: item?.meta?.query,
         },
       }
       if (item.children) {

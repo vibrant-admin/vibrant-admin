@@ -10,6 +10,7 @@ defineProps<{
 <template>
   <ElSubMenu v-if="menuItem.children && menuItem.children.some((i:any) => i.meta?.menu !== false)" :index="menuItem.path">
     <template #title>
+      <VIcon class="mr-1.5" :name="menuItem.meta?.icon" />
       <span>{{ menuItem.meta?.title }}</span>
     </template>
     <template v-for="childItem in menuItem.children" :key="childItem.path">
@@ -18,7 +19,8 @@ defineProps<{
   </ElSubMenu>
   <ElMenuItem v-else :index="menuItem.path">
     <template #title>
-      <span>{{ menuItem.meta?.title }}</span>
+      <VIcon class="mr-1.5" :name="menuItem.meta?.icon" />
+      {{ menuItem.meta?.title }}
     </template>
   </ElMenuItem>
 </template>

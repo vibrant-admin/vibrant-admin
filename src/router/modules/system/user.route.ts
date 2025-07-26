@@ -3,7 +3,7 @@ export default {
   name: 'systemUser',
   meta: {
     title: '用户管理',
-    icon: 'i-material-symbols:user-attributes-outline-rounded',
+    icon: 'i-ri-user-settings-line',
     // auth: 'system.user.browse',
     auths: [
       { name: '预览', value: 'system.user.browse' },

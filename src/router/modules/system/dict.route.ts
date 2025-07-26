@@ -3,7 +3,7 @@ export default {
   name: 'systemDict',
   meta: {
     title: '字典管理',
-    icon: 'i-material-symbols:user-attributes-outline-rounded',
+    icon: 'i-ri-book-3-line',
     // auth: 'system.dict.browse',
     auths: [
       { name: '预览', value: 'system.dict.browse' },

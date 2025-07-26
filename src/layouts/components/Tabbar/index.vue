@@ -12,12 +12,12 @@ const isActive = ref(false)
         active: isActive,
       }"
     >
-      <VIcon name="i-tabler:atom" class="icon text-lg" />
+      <VIcon name="i-ri-shining-2-line" class="icon" />
       <div class="title text-sm flex-1 text-nowrap overflow-hidden">
         管理员管理员管理员管理员
       </div>
-      <div class="close p-[2px] rounded-full flex transition-colors items-center right-2 justify-center absolute">
-        <VIcon name="i-material-symbols:close-rounded" class="text-sm" />
+      <div class="close rounded-full flex h-[16px] w-[16px] transition-colors items-center right-2 justify-center absolute">
+        <VIcon name="i-ri-close-line" />
       </div>
     </div>
   </div>

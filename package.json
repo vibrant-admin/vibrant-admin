@@ -18,6 +18,7 @@
     "cz": "czg"
   },
   "dependencies": {
+    "@unocss/preset-icons": "^66.3.3",
     "@vueuse/core": "^13.5.0",
     "clsx": "^2.1.1",
     "element-plus": "^2.10.4",
@@ -30,7 +31,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.18.0",
-    "@iconify/json": "^2.2.362",
+    "@iconify-json/ri": "^1.2.5",
     "@stylistic/stylelint-config": "^3.0.0",
     "@tsconfig/node22": "^22.0.2",
     "@types/node": "^24.1.0",

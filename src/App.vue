@@ -34,10 +34,12 @@ if (isSupprotColorMix) {
 </script>
 
 <template>
-  <el-config-provider :locale="zhCn">
-    <RouterView v-slot="{ Component }">
-      <component :is="Component" v-if="isAuth" />
-      <VNotAllowed v-else />
-    </RouterView>
-  </el-config-provider>
+  <div class="text-foreground bg-background h-full w-full transition-colors">
+    <ElConfigProvider :locale="zhCn">
+      <RouterView v-slot="{ Component }">
+        <component :is="Component" v-if="isAuth" />
+        <VNotAllowed v-else />
+      </RouterView>
+    </ElConfigProvider>
+  </div>
 </template>

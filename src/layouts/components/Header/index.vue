@@ -17,7 +17,7 @@ const title = import.meta.env.VITE_APP_TITLE
       </h1>
       <Breadcrumb />
     </div>
-    <div class="flex items-center">
+    <div class="text-foreground flex gap-3 items-center">
       <Notification />
       <Fullscreen />
       <Refresh />

@@ -3,7 +3,7 @@ export default {
   name: 'systemRole',
   meta: {
     title: '角色管理',
-    icon: 'i-material-symbols:user-attributes-outline-rounded',
+    icon: 'i-ri-user-star-line',
     // auth: 'system.role.browse',
     auths: [
       { name: '预览', value: 'system.role.browse' },

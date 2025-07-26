@@ -1,8 +1,17 @@
 import { entriesToCss, toArray } from '@unocss/core'
-import { defineConfig, presetAttributify, presetIcons, presetWind4, transformerAttributifyJsx, transformerDirectives, transformerVariantGroup } from 'unocss'
+import presetIcons from '@unocss/preset-icons'
+import { defineConfig, presetAttributify, presetWind4, transformerAttributifyJsx, transformerDirectives, transformerVariantGroup } from 'unocss'
 import themes from './src/assets/themes'
 
 export default defineConfig({
+  content: {
+    pipeline: {
+      include: [
+        /\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/,
+        'src/**/*.{js,ts}',
+      ],
+    },
+  },
   presets: [
     presetWind4({
       preflights: {
