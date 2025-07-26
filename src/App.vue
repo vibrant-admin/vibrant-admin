@@ -34,7 +34,7 @@ if (isSupprotColorMix) {
 </script>
 
 <template>
-  <div class="text-foreground bg-background h-full w-full transition-colors">
+  <div class="text-foreground bg-background h-full w-full transition-colors" @dragover.prevent>
     <ElConfigProvider :locale="zhCn">
       <RouterView v-slot="{ Component }">
         <component :is="Component" v-if="isAuth" />

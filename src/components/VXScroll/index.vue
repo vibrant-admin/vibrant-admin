@@ -2,8 +2,6 @@
 import type { UseScrollReturn } from '@vueuse/core'
 import { vResizeObserver, vScroll } from '@vueuse/components'
 
-import { useDebounceFn } from '@vueuse/core'
-
 const wrapperSize = reactive({ width: 0, height: 0 })
 const contentSize = reactive({ width: 0, height: 0 })
 // 滚动条是否在开始位置
@@ -47,7 +45,7 @@ function onScroll({ arrivedState }: { arrivedState: UseScrollReturn['arrivedStat
       '--height': `${wrapperSize.height}px`,
     }"
   >
-    <div v-scroll="useDebounceFn(onScroll, 50)" class="v-scroll h-[var(--width)] w-[var(--height)] transform-origin-tl transform-translate-y-[var(--height)] transform-rotate--90 overflow-x-auto overflow-y-auto">
+    <div v-scroll="onScroll" class="v-scroll h-[var(--width)] w-[var(--height)] transform-origin-tl transform-translate-y-[var(--height)] transform-rotate--90 overflow-x-hidden overflow-y-auto">
       <div v-resize-observer="onContentResizeObserver" style="width: max-content;" class="h-[var(--height)] w-[var(--width)] transform-origin-tl transform-translate-x-[var(--height)] transform-rotate-90">
         <slot />
       </div>

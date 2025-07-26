@@ -37,9 +37,15 @@ export const useTabbarStore = defineStore('tabbar', () => {
     }
   }
 
+  // 拖动
+  function sort(newIndex: number, oldIndex: number) {
+    list.value.splice(newIndex, 0, list.value.splice(oldIndex, 1)[0])
+  }
+
   return {
     list,
     add,
     remove,
+    sort,
   }
 })
