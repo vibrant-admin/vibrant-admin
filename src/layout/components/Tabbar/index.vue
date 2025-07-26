@@ -11,7 +11,7 @@ watch(() => route.fullPath, () => {
 
 <template>
   <VXScroll>
-    <div class="flex gap-1 h-full">
+    <div class="mx-1 flex gap-1 h-full">
       <TransitionGroup name="tabbar">
         <div
           v-for="tab in tabbarStore.list"
