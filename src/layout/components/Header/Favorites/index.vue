@@ -25,7 +25,7 @@ function onAdd() {
           <VIcon v-else name="i-ri-star-s-fill" />
         </div>
       </div>
-      <div v-if="favoritesStore.list.length" class="mb-3 grid grid-cols-2">
+      <div v-if="favoritesStore.list.length" class="mb-3 gap-2 grid grid-cols-2">
         <div v-for="item in favoritesStore.list" :key="item.fullPath" class="group p-2 border border-border rounded border-dashed flex cursor-pointer items-center justify-between relative overflow-hidden hover:(text-primary border-primary)" @click="() => $router.push(item.fullPath)">
           <div class="flex flex-1 whitespace-nowrap items-center overflow-hidden group-hover:[mask-image:linear-gradient(to_right,#000_calc(100%-50px),transparent)]">
             <VIcon v-if="item.icon" :name="item.icon" class="mr-2" />

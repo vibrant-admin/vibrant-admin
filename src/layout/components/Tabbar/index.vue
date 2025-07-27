@@ -54,7 +54,7 @@ onMounted(() => {
         <div class="title text-sm flex-1 text-nowrap overflow-hidden">
           {{ tab.title }}
         </div>
-        <div class="flex h-[16px] w-[16px] transition-colors items-center right-2 justify-center absolute hover:text-primary" @click.stop="tabbarStore.remove(tab)">
+        <div v-show="tabbarStore.list.length > 1" class="flex h-[16px] w-[16px] transition-colors items-center right-2 justify-center absolute hover:text-primary" @click.stop="tabbarStore.remove(tab)">
           <VIcon name="i-ri-close-line" />
         </div>
       </div>
