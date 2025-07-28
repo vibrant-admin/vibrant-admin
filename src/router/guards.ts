@@ -1,6 +1,6 @@
 import type { Router, RouteRecordRaw } from 'vue-router'
-import { at } from 'es-toolkit/array'
-import { isArray, isString } from 'es-toolkit/compat'
+import { isBoolean, isString } from 'es-toolkit'
+import { isArray } from 'es-toolkit/compat'
 import { asyncRoutes } from './routes'
 
 function setupRoutes(router: Router) {
@@ -76,47 +76,47 @@ function setupRoutes(router: Router) {
 
 // 页面缓存
 function setupKeepAlive(router: Router) {
-  router.afterEach((to, from) => {
+  router.afterEach(async (to, from) => {
     const keepAliveStore = useKeepAliveStore()
     // 如果当前路由和离开路由不相同，则进行缓存处理
     if (to.fullPath !== from.fullPath) {
-      // 判断当前页面是否开启缓存，如果开启，则将当前页面的 name 信息存入 keepAlive 全局状态
       if (to.meta.cache) {
-        const componentName = at(to.matched, [-1])[0]?.components?.default.name
+        const componentName = to.matched.at(-1)?.components?.default.name
         if (componentName) {
+          let shouldClearCache = false
+
+          if (isBoolean(to.meta.cache)) {
+            shouldClearCache = to.meta.cache
+          }
+          else if (isString(to.meta.cache)) {
+            shouldClearCache = to.meta.cache !== from.name
+          }
+          else if (isArray(to.meta.cache)) {
+            shouldClearCache = to.meta.cache.includes(from.name)
+          }
+
+          if (to.meta.noCache) {
+            if (isString(to.meta.noCache)) {
+              shouldClearCache = to.meta.noCache === from.name
+            }
+            else if (isArray(to.meta.noCache)) {
+              shouldClearCache = to.meta.noCache.includes(from.name)
+            }
+          }
+
+          if (from.name === 'reload') {
+            shouldClearCache = true
+          }
+
+          if (shouldClearCache) {
+            keepAliveStore.remove(componentName)
+            await nextTick()
+          }
+
           keepAliveStore.add(componentName)
         }
         else {
           console.warn('[Vibrant Admin] 该页面组件未设置组件名，会导致缓存失效，请检查')
-        }
-      }
-
-      // 判断离开页面是否开启缓存，如果开启，则根据缓存规则判断是否需要清空 keepAlive 全局状态里离开页面的 name 信息
-      if (from.meta.cache) {
-        const componentName = at(from.matched, [-1])[0]?.components?.default.name
-        if (componentName) {
-          // 通过 meta.cache 判断针对哪些页面进行缓存
-          if (isString(from.meta.cache) && from.meta.cache !== to.name) {
-            keepAliveStore.remove(componentName)
-          }
-          else if (isArray(from.meta.cache) && !from.meta.cache.includes(to.name as string)) {
-            keepAliveStore.remove(componentName)
-          }
-
-          // 通过 meta.noCache 判断针对哪些页面不需要进行缓存
-          if (from.meta.noCache) {
-            if (isString(from.meta.noCache) && from.meta.noCache === to.name) {
-              keepAliveStore.remove(componentName)
-            }
-            else if (isArray(from.meta.noCache) && from.meta.noCache.includes(to.name as string)) {
-              keepAliveStore.remove(componentName)
-            }
-          }
-
-          // 如果进入的是 reload 页面，则也将离开页面的缓存清空
-          if (to.name === 'reload') {
-            keepAliveStore.remove(componentName)
-          }
         }
       }
     }

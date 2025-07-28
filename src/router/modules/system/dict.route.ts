@@ -15,13 +15,24 @@ export default {
   children: [
     {
       path: '',
-      name: 'systemDictList',
+      name: 'SystemDictList',
       component: () => import('@/views/system/dict/list.vue'),
       meta: {
         title: '字典列表',
         menu: false,
         cache: true,
-        // auth: 'system.dict.browse',
+        noCache: ['SystemDictCreate'],
+      },
+    },
+    {
+      path: 'post',
+      name: 'SystemDictCreate',
+      component: () => import('@/views/system/dict/post.vue'),
+      meta: {
+        title: '创建字典',
+        menu: false,
+        cache: true,
+        noCache: ['SystemDictList'],
       },
     },
   ],
