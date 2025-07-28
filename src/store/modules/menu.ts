@@ -2,11 +2,19 @@ import type { RouteRecordRaw } from 'vue-router'
 import { resolveRoutePath } from '@/utils'
 
 export const useMenuStore = defineStore('menu', () => {
+  const route = useRoute()
   const routeStore = useRouteStore()
   const { auth } = useAuth()
 
   // 当前激活菜单
-  const defaultActive = ref<string>('')
+  const active = computed(() => route.matched.reduce((path, item) => {
+    return item.meta.menu !== false && item.path.length > path.length ? item.path : path
+  }, ''))
+
+  // 导航菜单
+  const allMenus = computed(() => {
+    return filterMenus(convertRouteToMenu(routeStore.routesRaw))
+  })
 
   // 将路由转换为导航菜单
   function convertRouteToMenu(routes: RouteRecordRaw[], basePath = '') {
@@ -42,11 +50,6 @@ export const useMenuStore = defineStore('menu', () => {
     })
   }
 
-  // 导航菜单
-  const allMenus = computed(() => {
-    return filterMenus(convertRouteToMenu(routeStore.routesRaw))
-  })
-
   // 次导航第一层最深路径
   const firstDeepestPath = computed(() => {
     const findDeepestPath = (menus: any[], currentPath: string = ''): string => {
@@ -69,7 +72,7 @@ export const useMenuStore = defineStore('menu', () => {
   })
 
   return {
-    defaultActive,
+    active,
     allMenus,
     firstDeepestPath,
   }

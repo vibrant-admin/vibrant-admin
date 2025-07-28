@@ -4,7 +4,6 @@ import Sortable from 'sortablejs'
 const router = useRouter()
 const route = useRoute()
 const tabbarStore = useTabbarStore()
-const menuStore = useMenuStore()
 const containerRef = useTemplateRef('containerRef')
 
 watch(() => route.fullPath, () => {
@@ -46,7 +45,7 @@ onMounted(() => {
         class="tab-item px-2 rounded flex flex-none gap-1 h-full w-[150px] cursor-pointer select-none items-center relative"
         :class="{
           'transition-colors': !isDragging,
-          'active': menuStore.defaultActive === tab.fullPath,
+          'active': route.fullPath === tab.fullPath,
         }"
         @click="router.push(tab.fullPath)"
       >

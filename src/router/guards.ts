@@ -12,9 +12,6 @@ function setupRoutes(router: Router) {
     if (userStore.isLogin) {
       // 是否已根据权限动态生成并注册路由
       if (routeStore.isGenerate) {
-        // 激活菜单
-        menuStore.defaultActive = to.path
-
         // 如果已登录状态下，进入登录页会强制跳转第一个模块
         if (to.name === 'login') {
           next(menuStore.firstDeepestPath)

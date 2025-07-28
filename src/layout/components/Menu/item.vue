@@ -20,7 +20,7 @@ defineProps<{
   <ElMenuItem v-else :index="menuItem.path">
     <template #title>
       <VIcon class="mr-1.5" :name="menuItem.meta?.icon" />
-      {{ menuItem.meta?.title }}
+      <span>{{ menuItem.meta?.title }}</span>
     </template>
   </ElMenuItem>
 </template>

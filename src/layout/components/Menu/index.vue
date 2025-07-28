@@ -6,14 +6,10 @@ defineProps<{
 }>()
 
 const menuStore = useMenuStore()
-
-function handleSelect(key: string) {
-  menuStore.defaultActive = key
-}
 </script>
 
 <template>
-  <ElMenu :default-active="menuStore.defaultActive" router @select="handleSelect">
+  <ElMenu :default-active="menuStore.active" router>
     <MenuItem v-for="item in data" :key="item.path" :menu-item="item" />
   </ElMenu>
 </template>
@@ -26,6 +22,7 @@ function handleSelect(key: string) {
   --el-menu-active-color: var(--primary-foreground);
 
   :deep(.el-menu-item.is-active) {
+    position: relative;
     background-color: var(--el-color-primary);
   }
 
