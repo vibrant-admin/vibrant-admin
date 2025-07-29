@@ -48,6 +48,10 @@ export default defineConfig({
         colors: {
           border: 'var(--border)',
           background: 'var(--background)',
+          main: {
+            DEFAULT: 'var(--main)',
+            foreground: 'var(--main-foreground)',
+          },
           foreground: 'var(--foreground)',
           primary: {
             DEFAULT: 'var(--primary)',

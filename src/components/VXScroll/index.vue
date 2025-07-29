@@ -64,7 +64,7 @@ function onScroll({ arrivedState }: { arrivedState: UseScrollReturn['arrivedStat
     height: 100%;
     pointer-events: none;
     content: "";
-    background-image: linear-gradient(-90deg, transparent, var(--main-area-bg));
+    background-image: linear-gradient(-90deg, transparent, var(--main));
     opacity: 0;
     transition: opacity 0.3s ease;
   }

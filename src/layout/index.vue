@@ -24,7 +24,7 @@ function onScroll({ arrivedState }: { arrivedState: UseScrollReturn['arrivedStat
       <div class="border-r border-border flex-none h-[100%] w-[250px] transition-colors">
         <Sidebar />
       </div>
-      <div class="bg-[--main-area-bg] flex flex-auto flex-col w-0 transition-colors">
+      <div class="bg-main flex flex-auto flex-col w-0 transition-colors">
         <div
           class="tabbar-container py-1 border-b border-border h-[48px] transition-colors" :class="{
             mask: !isTop,
@@ -32,7 +32,7 @@ function onScroll({ arrivedState }: { arrivedState: UseScrollReturn['arrivedStat
         >
           <Tabbar />
         </div>
-        <div v-scroll="onScroll" class="p-4 flex-1 relative overflow-auto">
+        <div v-scroll="onScroll" class="p-3 flex-1 relative overflow-auto">
           <RouterView v-slot="{ Component }">
             <Transition name="main" mode="out-in">
               <KeepAlive :include="keepAliveStore.list">
@@ -71,7 +71,7 @@ function onScroll({ arrivedState }: { arrivedState: UseScrollReturn['arrivedStat
     height: 50px;
     pointer-events: none;
     content: "";
-    background-image: linear-gradient(0deg, transparent, var(--main-area-bg));
+    background-image: linear-gradient(0deg, transparent, var(--main));
     opacity: 0;
     transition: opacity 0.3s ease;
   }
