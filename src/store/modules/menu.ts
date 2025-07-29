@@ -7,7 +7,7 @@ export const useMenuStore = defineStore('menu', () => {
   const { auth } = useAuth()
 
   // 当前激活菜单
-  const active = computed(() => route.matched.reduce((path, item) => {
+  const active = computed(() => route.meta?.activeMenu || route.matched.reduce((path, item) => {
     return item.meta.menu !== false && item.path.length > path.length ? item.path : path
   }, ''))
 

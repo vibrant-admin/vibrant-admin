@@ -35,19 +35,6 @@ export default {
         noCache: ['SystemDictList'],
       },
     },
-    {
-      path: 'post',
-      name: 'systemDictCreate',
-      component: () => import('@/views/system/dict/post.vue'),
-      meta: {
-        title: '创建字典',
-        menu: false,
-        activeMenu: '/system/dict',
-        cache: true,
-        noCache: 'systemDictList',
-        copyright: false,
-        // auth: 'system.dict.create',
-      },
-    },
+
   ],
 }
