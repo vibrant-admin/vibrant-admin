@@ -20,6 +20,7 @@ declare module 'vue' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    VContextMenu: typeof import('./../components/VContextMenu/index.vue')['default']
     VIcon: typeof import('./../components/VIcon/index.vue')['default']
     VNotAllowed: typeof import('./../components/VNotAllowed/index.vue')['default']
     VPage: typeof import('./../components/VPage/index.vue')['default']

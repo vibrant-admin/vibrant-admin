@@ -1,6 +1,7 @@
 /** @type {import('stylelint').Config} */
 export default {
   extends: [
+    'stylelint-config-recommended-scss',
     'stylelint-config-recommended-vue',
     'stylelint-config-recess-order',
     '@stylistic/stylelint-config',

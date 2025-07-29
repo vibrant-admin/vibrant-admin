@@ -1,0 +1,31 @@
+html[data-theme="default"] {
+  color-scheme: light;
+  --primary: hsl(200 50% 50%);
+  --primary-foreground: hsl(200 50% 90%);
+
+  @for $i from 0 through 20 {
+    $lightness: 100% - $i * 5%;
+    @if $i == 0 {
+      --basic: hsl(220 10% #{$lightness});
+    }
+    @else {
+      --basic-#{$i}: hsl(220 10% #{$lightness});
+    }
+  }
+}
+
+html.dark[data-theme="default"] {
+  color-scheme: dark;
+  --primary: hsl(200 50% 50%);
+  --primary-foreground: hsl(200 50% 90%);
+
+  @for $i from 0 through 20 {
+    $lightness: 0% + $i * 5%;
+    @if $i == 0 {
+      --basic: hsl(220 10% #{$lightness});
+    }
+    @else {
+      --basic-#{$i}: hsl(220 10% #{$lightness});
+    }
+  }
+}

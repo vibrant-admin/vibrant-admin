@@ -1,0 +1,58 @@
+<script setup lang="ts">
+interface MenuItem {
+  label: string
+  icon?: string
+  disabled?: boolean
+  click?: () => void
+}
+defineProps<{
+  menu: MenuItem[]
+}>()
+const { x, y, showMenu } = useContextMenu(useTemplateRef('contextMenuRef'))
+
+function onBeforeEnter(el: any) {
+  el.style.height = 0
+}
+function onEnter(el: any) {
+  el.style.height = 'auto'
+  const h = el.clientHeight
+  el.style.height = 0
+  requestAnimationFrame(() => {
+    el.style.height = `${h}px`
+    el.style.transition = 'height 0.3s ease'
+  })
+}
+function onAfterEnter(el: any) {
+  el.style.transition = 'none'
+}
+</script>
+
+<template>
+  <div ref="contextMenuRef">
+    <slot />
+
+    <slot name="context-menu">
+      <Teleport to="body">
+        <Transition @before-enter="onBeforeEnter" @enter="onEnter" @after-enter="onAfterEnter">
+          <div
+            v-show="showMenu"
+            v-if="menu.length > 0" :style="{
+              left: `${x}px`,
+              top: `${y}px`,
+            }"
+            class="bg-background border-border p-1 border rounded rounded-lg shadow-xs fixed overflow-hidden"
+          >
+            <div
+              v-for="item in menu" :key="item.label" :class="{
+                'text-secondary-foreground': item.disabled,
+              }" class="hover:bg-secondary text-sm leading-none px-3 py-2 rounded flex gap-1 cursor-pointer items-center" @click.stop="item.click"
+            >
+              <VIcon v-if="item.icon" :name="item.icon" />
+              <span>{{ item.label }}</span>
+            </div>
+          </div>
+        </Transition>
+      </Teleport>
+    </slot>
+  </div>
+</template>

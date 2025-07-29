@@ -14,7 +14,7 @@ const isDragging = ref(false)
 onMounted(() => {
   if (containerRef.value) {
     Sortable.create(containerRef.value.$el, {
-      animation: 200,
+      animation: 150,
       ghostClass: 'opacity-0',
       draggable: '.tab-item',
       preventOnFilter: true,
@@ -32,31 +32,71 @@ onMounted(() => {
     })
   }
 })
+
+function contextMenu(tab: any) {
+  return [
+    {
+      label: '重新加载',
+      icon: 'i-ri-refresh-line',
+      disabled: route.fullPath === tab.fullPath,
+      click: () => {
+        router.push({ name: 'reload' })
+      },
+    },
+    {
+      label: '关闭标签',
+      icon: 'i-ri-close-large-line',
+      click: () => {
+      },
+    },
+    {
+      label: '关闭其他标签',
+      icon: 'i-ri-close-large-line',
+      click: () => {
+      },
+    },
+    {
+      label: '关闭左侧标签',
+      icon: 'i-ri-expand-left-line',
+      click: () => {
+      },
+    },
+    {
+      label: '关闭右侧标签',
+      icon: 'i-ri-expand-right-line',
+      click: () => {
+      },
+    },
+  ]
+}
 </script>
 
 <template>
   <VXScroll>
-    <TransitionGroup
-      ref="containerRef" tag="div" class="mx-1 flex gap-1 h-full select-none" :name="!isDragging ? 'tabbar' : undefined"
-    >
-      <div
+    <TransitionGroup ref="containerRef" tag="div" class="mx-1 flex gap-1 h-full select-none" :name="!isDragging ? 'tabbar' : undefined">
+      <VContextMenu
         v-for="tab in tabbarStore.list"
         :key="tab.fullPath"
-        class="tab-item px-2 rounded flex flex-none gap-1 h-full w-[150px] cursor-pointer select-none items-center relative"
+        :menu="contextMenu(tab)"
+        class="tab-item text-basic-10 px-2 border border-transparent rounded flex flex-none gap-1 h-full w-[150px] cursor-pointer select-none items-center relative hover:bg-basic-2"
         :class="{
           'transition-colors': !isDragging,
-          'active': route.fullPath === tab.fullPath,
+          '!bg-basic !border-basic-1 !text-basic-20': route.fullPath === tab.fullPath,
         }"
         @click="router.push(tab.fullPath)"
       >
-        <VIcon :name="tab.icon" class="icon" />
-        <div class="title text-sm flex-1 text-nowrap overflow-hidden">
+        <VIcon :name="tab.icon" />
+        <div
+          :class="{
+            'me-5': tabbarStore.list.length > 1,
+          }" class="text-sm me-1 flex-1 text-nowrap [mask-image:linear-gradient(to_right,#000_calc(100%-20px),transparent)] overflow-hidden"
+        >
           {{ tab.title }}
         </div>
         <div v-show="tabbarStore.list.length > 1" class="flex h-[16px] w-[16px] transition-colors items-center right-2 justify-center absolute hover:text-primary" @click.stop="tabbarStore.remove(tab)">
           <VIcon name="i-ri-close-line" />
         </div>
-      </div>
+      </VContextMenu>
     </TransitionGroup>
   </VXScroll>
 </template>
@@ -66,7 +106,7 @@ onMounted(() => {
 .tabbar-enter-active,
 .tabbar-leave-active {
   pointer-events: none;
-  transition: all 0.3s ease;
+  transition: opacity 150ms, transform 150ms;
 }
 
 .tabbar-enter-from,
@@ -77,30 +117,5 @@ onMounted(() => {
 
 .tabbar-leave-active {
   position: absolute;
-}
-</style>
-
-<style scoped>
-.tab-item {
-  --opacity: 0.5;
-
-  &:hover {
-    --uno: bg-secondary;
-  }
-
-  .icon {
-    opacity: var(--opacity);
-  }
-
-  .title {
-    margin-inline-end: 20px;
-    opacity: var(--opacity);
-    mask-image: linear-gradient(to right, #000 calc(100% - 20px), transparent);
-  }
-
-  &.active {
-    --opacity: 1;
-    --uno: bg-background;
-  }
 }
 </style>

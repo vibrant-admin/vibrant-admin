@@ -16,9 +16,9 @@ function onClick() {
 </script>
 
 <template>
-  <div class="breadcrumb-item group flex items-center">
+  <div class="group breadcrumb-item flex items-center">
     <span
-      class="text text-sm text-secondary-foreground bg-secondary opacity-60 flex items-center group-last:opacity-100"
+      class="text text-sm px-4 py-1.5 bg-basic-1 opacity-60 flex items-center group-last:opacity-100"
       :class="{
         'cursor-pointer transition-opacity hover-opacity-100': !!props.to,
       }" @click="onClick"
@@ -31,7 +31,6 @@ function onClick() {
 <style scoped>
 .breadcrumb-item {
   .text {
-    padding: 6px 16px;
     clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%, 8px 50%);
 
     [dir="rtl"] & {
@@ -40,7 +39,7 @@ function onClick() {
   }
 
   &:first-child .text {
-    padding-inline-start: 12px;
+    padding-inline-start: 10px;
     border-radius: 6px 0 0 6px;
     clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%);
 
@@ -51,7 +50,7 @@ function onClick() {
   }
 
   &:last-child:not(:first-child) .text {
-    padding-inline-end: 12px;
+    padding-inline-end: 10px;
     border-radius: 0 6px 6px 0;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 8px 50%);
 

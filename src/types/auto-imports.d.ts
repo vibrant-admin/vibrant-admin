@@ -67,6 +67,7 @@ declare global {
   const unref: typeof import('vue')['unref']
   const useAttrs: typeof import('vue')['useAttrs']
   const useAuth: typeof import('../hooks/useAuth')['default']
+  const useContextMenu: typeof import('../hooks/useContextMenu')['useContextMenu']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useFavoritesStore: typeof import('../store/modules/favorites')['useFavoritesStore']

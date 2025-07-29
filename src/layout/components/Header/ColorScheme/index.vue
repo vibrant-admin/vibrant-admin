@@ -23,7 +23,7 @@ const currentScheme = computed(() => {
 
 <template>
   <ElDropdown trigger="click">
-    <div class="text-lg text-foreground font-bold p-2 rounded flex cursor-pointer items-center hover:bg-secondary">
+    <div class="text-lg text-basic-20 font-bold p-2 rounded flex cursor-pointer items-center hover:bg-basic-1">
       <VIcon :name="currentScheme!.icon" />
     </div>
     <template #dropdown>

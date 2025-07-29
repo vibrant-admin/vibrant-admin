@@ -26,7 +26,7 @@ const hasBreadcrumb = computed(() => wrapperWidth.value > 800)
       </h1>
       <Breadcrumb v-if="hasBreadcrumb" />
     </div>
-    <div class="text-foreground flex gap-3 items-center">
+    <div class="flex gap-3 items-center">
       <Favorites />
       <Notification />
       <Fullscreen />

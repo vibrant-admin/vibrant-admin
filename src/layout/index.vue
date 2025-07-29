@@ -17,18 +17,17 @@ function onScroll({ arrivedState }: { arrivedState: UseScrollReturn['arrivedStat
 
 <template>
   <div class="flex flex-col h-[100vh] w-[100vw] relative">
-    <div class="text-foreground border-b border-border bg-background h-[60px] w-full transition-colors">
+    <div class="border-b border-basic-2 h-[60px] w-full transition-colors">
       <Header />
     </div>
     <div class="flex flex-1 overflow-hidden">
-      <div class="border-r border-border flex-none h-[100%] w-[250px] transition-colors">
+      <div class="border-r border-basic-2 flex-none h-[100%] w-[250px] transition-colors">
         <Sidebar />
       </div>
-      <div class="bg-main flex flex-auto flex-col w-0 transition-colors">
+      <div class="bg-basic-1 flex flex-auto flex-col w-0 transition-colors">
         <div
-          class="tabbar-container py-1 border-b border-border h-[48px] transition-colors" :class="{
-            mask: !isTop,
-          }"
+          class="tabbar-container py-1 border-b border-basic-2 h-[48px] transition-colors"
+          :class="{ mask: !isTop }"
         >
           <Tabbar />
         </div>
@@ -49,7 +48,7 @@ function onScroll({ arrivedState }: { arrivedState: UseScrollReturn['arrivedStat
 <style>
 .main-enter-active,
 .main-leave-active {
-  transition: opacity 150ms ease;
+  transition: opacity 150ms;
 }
 
 .main-enter-from,
@@ -71,9 +70,9 @@ function onScroll({ arrivedState }: { arrivedState: UseScrollReturn['arrivedStat
     height: 50px;
     pointer-events: none;
     content: "";
-    background-image: linear-gradient(0deg, transparent, var(--main));
+    background-image: linear-gradient(0deg, transparent, var(--basic-1));
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s;
   }
 
   &.mask {
