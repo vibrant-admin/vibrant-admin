@@ -24,7 +24,7 @@ function onScroll({ arrivedState }: { arrivedState: UseScrollReturn['arrivedStat
       <div class="border-r border-basic-2 flex-none h-[100%] w-[250px] transition-colors">
         <Sidebar />
       </div>
-      <div class="bg-basic-1 flex flex-auto flex-col w-0 transition-colors">
+      <div class="bg-basic-1 flex flex-auto flex-col w-0 transition-colors dark:bg-basic">
         <div
           class="tabbar-container py-1 border-b border-basic-2 h-[48px] transition-colors"
           :class="{ mask: !isTop }"

@@ -78,10 +78,10 @@ function contextMenu(tab: any) {
         v-for="tab in tabbarStore.list"
         :key="tab.fullPath"
         :menu="contextMenu(tab)"
-        class="tab-item text-basic-10 px-2 border border-transparent rounded flex flex-none gap-1 h-full w-[150px] cursor-pointer select-none items-center relative hover:bg-basic-2"
+        class="tab-item text-basic-10 px-2 border border-transparent rounded flex flex-none gap-1 h-full w-[150px] cursor-pointer select-none items-center relative hover:bg-basic-2 dark:hover:bg-basic-1"
         :class="{
           'transition-colors': !isDragging,
-          '!bg-basic !border-basic-1 !text-basic-20': route.fullPath === tab.fullPath,
+          '!bg-basic-2 !border-basic-1 !text-basic-20': route.fullPath === tab.fullPath,
         }"
         @click="router.push(tab.fullPath)"
       >
