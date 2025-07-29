@@ -62,9 +62,10 @@ onMounted(() => {
 </template>
 
 <style>
-.tabbar-move, /* 对移动中的元素应用的过渡 */
+.tabbar-move,
 .tabbar-enter-active,
 .tabbar-leave-active {
+  pointer-events: none;
   transition: all 0.3s ease;
 }
 
