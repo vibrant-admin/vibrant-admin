@@ -23,7 +23,7 @@ export const useTabbarStore = defineStore('tabbar', () => {
 
   // 删除标签
   function remove(route: any) {
-    const index = list.value.findIndex(item => item.fullPath === route.fullPath)
+    const index = list.value.findIndex(item => item?.fullPath === route.fullPath)
     // 如果标签不存在直接退出
     if (index === -1 || list.value.length === 1) {
       return
