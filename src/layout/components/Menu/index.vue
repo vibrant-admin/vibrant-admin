@@ -19,7 +19,7 @@ const menuStore = useMenuStore()
   border-right: 0;
   --el-menu-item-height: 48px;
   --el-menu-sub-item-height: var(--el-menu-item-height);
-  --el-menu-active-color: var(--primary-foreground);
+  --el-menu-active-color: var(--el-text-color-primary);
 
   :deep(.el-menu-item.is-active) {
     position: relative;
