@@ -15,21 +15,24 @@ const isAuth = computed(() => {
 // 设置 Element Plus 主题
 const settingStore = useSettingStore()
 const isSupprotColorMix = CSS.supports('color', 'color-mix(in srgb, #fff, #000)')
+const colorNames = ['primary', 'success', 'info', 'warning', 'danger']
 if (isSupprotColorMix) {
-  document.body.style.setProperty('--el-color-primary', 'var(--primary)')
-  document.body.style.setProperty('--el-text-color-primary', 'var(--primary-foreground)')
+  colorNames.forEach((colorName: string) => {
+    document.body.style.setProperty(`--el-color-${colorName}`, `var(--${colorName})`)
+    document.body.style.setProperty(`--el-text-color-${colorName}`, `var(--${colorName}-foreground)`)
+  })
 
   watch(() => settingStore.colorScheme, (colorScheme) => {
     const color = colorScheme === 'light' ? '#fff' : '#000'
     const colorForeground = colorScheme === 'light' ? '#000' : '#fff'
 
     for (let index = 1; index < 10; index++) {
-      document.body.style.setProperty(`--el-color-primary-light-${index}`, `color-mix(in hsl, var(--primary), ${color} ${index * 10}%)`)
-      document.body.style.setProperty(`--el-color-primary-dark-${index}`, `color-mix(in hsl, var(--primary), ${colorForeground} ${index * 10}%)`)
+      colorNames.forEach((colorName: string) => {
+        document.body.style.setProperty(`--el-color-${colorName}-light-${index}`, `color-mix(in hsl, var(--${colorName}), ${color} ${index * 10}%)`)
+        document.body.style.setProperty(`--el-color-${colorName}-dark-${index}`, `color-mix(in hsl, var(--${colorName}), ${colorForeground} ${index * 10}%)`)
+      })
     }
-  }, {
-    immediate: true,
-  })
+  }, { immediate: true })
 }
 </script>
 

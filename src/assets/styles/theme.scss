@@ -1,7 +1,20 @@
 html[data-theme="default"] {
   color-scheme: light;
-  --primary: hsl(200 50% 50%);
-  --primary-foreground: hsl(200 50% 90%);
+
+  --primary: hsl(210 100% 63%);
+  --primary-foreground: hsl(0 0 100%);
+
+  --success: hsl(100 54% 49%);
+  --success-foreground: hsl(0 0 100%);
+
+  --info: hsl(220 4% 58%);
+  --info-foreground: hsl(0 0 100%);
+
+  --warning: hsl(36 77% 57%);
+  --warning-foreground: hsl(0 0 100%);
+
+  --danger: hsl(0 87% 69%);
+  --danger-foreground: hsl(0 0 100%);
 
   @for $i from 0 through 20 {
     $lightness: 100% - $i * 5%;
@@ -16,8 +29,21 @@ html[data-theme="default"] {
 
 html.dark[data-theme="default"] {
   color-scheme: dark;
-  --primary: hsl(200 50% 50%);
-  --primary-foreground: hsl(200 50% 90%);
+
+  --primary: hsl(210 100% 63%);
+  --primary-foreground: hsl(0 0 100%);
+
+  --success: hsl(100 54% 49%);
+  --success-foreground: hsl(0 0 100%);
+
+  --info: hsl(220 4% 58%);
+  --info-foreground: hsl(0 0 100%);
+
+  --warning: hsl(36 77% 57%);
+  --warning-foreground: hsl(0 0 100%);
+
+  --danger: hsl(0 87% 69%);
+  --danger-foreground: hsl(0 0 100%);
 
   @for $i from 0 through 20 {
     $lightness: 0% + $i * 5%;
