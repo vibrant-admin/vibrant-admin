@@ -1,5 +1,7 @@
+import { entriesToCss, toArray } from '@unocss/core'
 import presetIcons from '@unocss/preset-icons'
 import { defineConfig, presetAttributify, presetWind4, transformerAttributifyJsx, transformerDirectives, transformerVariantGroup } from 'unocss'
+import themes from './src/assets/themes'
 
 export default defineConfig({
   content: {
@@ -24,11 +26,49 @@ export default defineConfig({
       warn: true,
     }),
   ],
+  preflights: [
+    {
+      getCSS: () => Object.entries(themes).flatMap(([themeName, colors]) =>
+        Object.entries(colors).map(([colorScheme, colorValues]) => {
+          const lightness = colorScheme === 'light' ? 100 : 0
+          return toArray(
+            colorScheme === 'light'
+              ? `html[data-theme="${themeName}"]`
+              : `html.dark[data-theme="${themeName}"]`,
+          ).map(root => `${root}{color-scheme:${colorScheme};${entriesToCss(Object.entries({
+            ...colorValues,
+            ...Object.fromEntries(
+              Array.from({ length: 21 }, (_, i) => [
+                `--basic${i !== 0 ? `-${i}` : ''}`,
+                `hsl(${colorValues['--basic-hs']} ${colorScheme === 'light' ? lightness - 5 * i : lightness + 5 * i}%)`,
+              ]),
+            ),
+          }))}}`).join('')
+        }).join('\n'),
+      ).join('\n'),
+    },
+  ],
   theme: {
     colors: {
       primary: {
-        DEFAULT: 'var(--primary)',
-        foreground: 'var(--primary-foreground)',
+        DEFAULT: 'hsl(var(--primary))',
+        foreground: 'hsl(var(--primary-foreground))',
+      },
+      success: {
+        DEFAULT: 'hsl(var(--success))',
+        foreground: 'hsl(var(--success-foreground))',
+      },
+      info: {
+        DEFAULT: 'hsl(var(--info))',
+        foreground: 'hsl(var(--info-foreground))',
+      },
+      warning: {
+        DEFAULT: 'hsl(var(--warning))',
+        foreground: 'hsl(var(--warning-foreground))',
+      },
+      danger: {
+        DEFAULT: 'hsl(var(--danger))',
+        foreground: 'hsl(var(--danger-foreground))',
       },
       ...Object.fromEntries(
         Array.from({ length: 21 }, (_, i) => {

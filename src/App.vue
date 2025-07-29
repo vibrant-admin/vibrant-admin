@@ -18,8 +18,8 @@ const isSupprotColorMix = CSS.supports('color', 'color-mix(in srgb, #fff, #000)'
 const colorNames = ['primary', 'success', 'info', 'warning', 'danger']
 if (isSupprotColorMix) {
   colorNames.forEach((colorName: string) => {
-    document.body.style.setProperty(`--el-color-${colorName}`, `var(--${colorName})`)
-    document.body.style.setProperty(`--el-text-color-${colorName}`, `var(--${colorName}-foreground)`)
+    document.body.style.setProperty(`--el-color-${colorName}`, `hsl(var(--${colorName}))`)
+    document.body.style.setProperty(`--el-text-color-${colorName}`, `hsl(var(--${colorName}-foreground))`)
   })
 
   watch(() => settingStore.colorScheme, (colorScheme) => {
@@ -28,8 +28,8 @@ if (isSupprotColorMix) {
 
     for (let index = 1; index < 10; index++) {
       colorNames.forEach((colorName: string) => {
-        document.body.style.setProperty(`--el-color-${colorName}-light-${index}`, `color-mix(in hsl, var(--${colorName}), ${color} ${index * 10}%)`)
-        document.body.style.setProperty(`--el-color-${colorName}-dark-${index}`, `color-mix(in hsl, var(--${colorName}), ${colorForeground} ${index * 10}%)`)
+        document.body.style.setProperty(`--el-color-${colorName}-light-${index}`, `color-mix(in hsl, hsl(var(--${colorName})), ${color} ${index * 10}%)`)
+        document.body.style.setProperty(`--el-color-${colorName}-dark-${index}`, `color-mix(in hsl, hsl(var(--${colorName})), ${colorForeground} ${index * 10}%)`)
       })
     }
   }, { immediate: true })

@@ -3,9 +3,6 @@ import App from './App.vue'
 import router from './router'
 import pinia from './store'
 
-// 主题样式加载
-import '@/assets/styles/theme.scss'
-
 // UnoCSS
 import 'virtual:uno.css'
 
