@@ -27,7 +27,7 @@ const iconType = computed(() => {
 </script>
 
 <template>
-  <i :class="classMerge('relative size-[1em] flex-inline items-center justify-center fill-current leading-[1em]', props.class)">
+  <i v-if="props.name" :class="classMerge('relative size-[1em] flex-inline items-center justify-center fill-current leading-[1em]', props.class)">
     <i v-if="iconType === 'unocss'" class="flex-none" :class="props.name" />
     <component :is="svgComps[`/src/assets/icons/${props.name}.svg`]" v-if="iconType === 'svg'" class="flex-none" />
   </i>
