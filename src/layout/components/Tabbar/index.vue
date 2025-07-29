@@ -37,7 +37,7 @@ onMounted(() => {
 <template>
   <VXScroll>
     <TransitionGroup
-      ref="containerRef" tag="div" class="mx-1 flex gap-1 h-full" :name="!isDragging ? 'tabbar' : undefined"
+      ref="containerRef" tag="div" class="mx-1 flex gap-1 h-full select-none" :name="!isDragging ? 'tabbar' : undefined"
     >
       <div
         v-for="tab in tabbarStore.list"
