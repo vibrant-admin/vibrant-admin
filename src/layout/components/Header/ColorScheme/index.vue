@@ -36,7 +36,7 @@ async function toggleColorScheme(event: MouseEvent) {
 </script>
 
 <template>
-  <div class="text-lg text-basic-20 font-bold p-2 rounded flex cursor-pointer items-center hover:bg-basic-1 dark:hover:bg-basic-3" @click="toggleColorScheme($event)">
+  <div class="text-lg font-bold p-2 rounded flex cursor-pointer items-center hover:bg-basic-1 dark:hover:bg-basic-3" @click="toggleColorScheme($event)">
     <VIcon :name="settingStore.colorScheme === 'light' ? 'i-ri-sun-line' : settingStore.colorScheme === 'dark' ? 'i-ri-moon-clear-line' : 'i-ri-contrast-line'" />
   </div>
 </template>

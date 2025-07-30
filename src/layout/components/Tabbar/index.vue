@@ -78,9 +78,8 @@ function contextMenu(tab: any) {
         v-for="tab in tabbarStore.list"
         :key="tab.fullPath"
         :menu="contextMenu(tab)"
-        class="tab-item text-basic-10 px-2 border border-transparent rounded flex flex-none gap-1 h-full w-[150px] cursor-pointer select-none items-center relative hover:bg-basic-2 dark:hover:bg-basic-2"
+        class="tab-item text-basic-10 px-2 border border-transparent rounded flex flex-none gap-1 h-full w-[150px] cursor-pointer select-none transition-colors items-center relative hover:bg-basic-2 dark:hover:bg-basic-2"
         :class="{
-          'transition-colors': !isDragging,
           '!bg-basic !dark:bg-basic-3 !border-basic-2 !dark:border-basic-4 !text-basic-20': route.fullPath === tab.fullPath,
         }"
         @click="router.push(tab.fullPath)"
@@ -93,7 +92,7 @@ function contextMenu(tab: any) {
         >
           {{ tab.title }}
         </div>
-        <div v-show="tabbarStore.list.length > 1" class="flex h-[16px] w-[16px] transition-colors items-center right-2 justify-center absolute hover:text-primary" @click.stop="tabbarStore.remove(tab)">
+        <div v-show="tabbarStore.list.length > 1" class="text-basic-20 flex h-[16px] w-[16px] transition-color items-center right-2 justify-center absolute hover:text-primary" @click.stop="tabbarStore.remove(tab)">
           <VIcon name="i-ri-close-line" />
         </div>
       </VContextMenu>
