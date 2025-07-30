@@ -17,9 +17,9 @@ const settingStore = useSettingStore()
 const isSupprotColorMix = CSS.supports('color', 'color-mix(in srgb, #fff, #000)')
 const colorNames = ['primary', 'success', 'info', 'warning', 'danger']
 if (isSupprotColorMix) {
+  document.body.style.setProperty('--el-bg-color', 'hsl(var(--basic))')
   colorNames.forEach((colorName: string) => {
     document.body.style.setProperty(`--el-color-${colorName}`, `hsl(var(--${colorName}))`)
-    document.body.style.setProperty(`--el-text-color-${colorName}`, `hsl(var(--${colorName}-foreground))`)
   })
 
   watch(() => settingStore.colorScheme, (colorScheme) => {
@@ -43,6 +43,7 @@ if (isSupprotColorMix) {
         <component :is="Component" v-if="isAuth" />
         <VNotAllowed v-else />
       </RouterView>
+      <VCheckUpdate />
     </ElConfigProvider>
   </div>
 </template>

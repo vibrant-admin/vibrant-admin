@@ -40,7 +40,7 @@ export default defineConfig({
             ...Object.fromEntries(
               Array.from({ length: 21 }, (_, i) => [
                 `--basic${i !== 0 ? `-${i}` : ''}`,
-                `hsl(${colorValues['--basic-hs']} ${colorScheme === 'light' ? lightness - 5 * i : lightness + 5 * i}%)`,
+                `${colorValues['--basic-hs']} ${colorScheme === 'light' ? lightness - 5 * i : lightness + 5 * i}%`,
               ]),
             ),
           }))}}`).join('')
@@ -73,7 +73,7 @@ export default defineConfig({
       ...Object.fromEntries(
         Array.from({ length: 21 }, (_, i) => {
           const name = `basic${i !== 0 ? (`-${i}`) : ''}`
-          return [name, `var(--${name})`]
+          return [name, `hsl(var(--${name}))`]
         }),
       ),
     },

@@ -10,6 +10,7 @@
     },
     "types": [
       "vite-plugin-app-loading/client"
+      // "element-plus/global"
     ]
   },
   "include": ["src/**/*"],
