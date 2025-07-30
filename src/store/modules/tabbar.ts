@@ -24,8 +24,8 @@ export const useTabbarStore = defineStore('tabbar', () => {
   }
 
   // 删除标签
-  function remove(route: any) {
-    const index = list.value.findIndex(item => item?.fullPath === route.fullPath)
+  function remove(tab: any) {
+    const index = list.value.findIndex(item => item?.fullPath === tab.fullPath)
     // 如果标签不存在直接退出
     if (index === -1 || list.value.length === 1) {
       return
@@ -34,12 +34,12 @@ export const useTabbarStore = defineStore('tabbar', () => {
     list.value.splice(index, 1)
 
     // 删除缓存
-    if (route.componentName) {
-      keepAliveStore.remove(route.componentName)
+    if (tab.componentName) {
+      keepAliveStore.remove(tab.componentName)
     }
 
     // 如果删除的标签是当前路由，跳转到上一个标签
-    if (route.fullPath === currentRoute.fullPath) {
+    if (tab.fullPath === currentRoute.fullPath) {
       const previousRoute = list.value[index > 0 ? index - 1 : 0]
       router.push({ path: previousRoute.fullPath })
     }
@@ -53,7 +53,7 @@ export const useTabbarStore = defineStore('tabbar', () => {
   return {
     list,
     add,
-    remove,
     sort,
+    remove,
   }
 })

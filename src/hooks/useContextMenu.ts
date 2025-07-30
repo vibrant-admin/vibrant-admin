@@ -1,6 +1,6 @@
 import { useEventListener } from '@vueuse/core'
 
-export function useContextMenu(containerRef: Ref<HTMLDivElement | null>) {
+export function useContextMenu(containerRef: Ref<HTMLDivElement | null>, menuRef: Ref<HTMLDivElement | null>) {
   const x = ref(0)
   const y = ref(0)
   const showMenu = ref(false)
@@ -14,7 +14,11 @@ export function useContextMenu(containerRef: Ref<HTMLDivElement | null>) {
       showMenu.value = true
     })
 
-    useEventListener(window, 'click', () => {
+    useEventListener(window, 'click', (e: PointerEvent) => {
+      if (menuRef.value && menuRef.value.contains(e.target as Node)) {
+        return
+      }
+
       showMenu.value = false
     }, { capture: true })
 

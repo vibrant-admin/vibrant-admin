@@ -10,6 +10,15 @@ watch(() => route.fullPath, () => {
   tabbarStore.add(route)
 }, { immediate: true })
 
+// 当前激活标签
+let activeTabBackup = ''
+const activeTab = computed(() => {
+  if (route.name === 'reload') {
+    return activeTabBackup
+  }
+  return activeTabBackup = route.fullPath
+})
+
 const isDragging = ref(false)
 onMounted(() => {
   if (containerRef.value) {
@@ -38,7 +47,7 @@ function contextMenu(tab: any) {
     {
       label: '重新加载',
       icon: 'i-ri-refresh-line',
-      disabled: route.fullPath === tab.fullPath,
+      disabled: route.fullPath !== tab.fullPath,
       click: () => {
         router.push({ name: 'reload' })
       },
@@ -47,24 +56,39 @@ function contextMenu(tab: any) {
       label: '关闭标签',
       icon: 'i-ri-close-large-line',
       click: () => {
+        tabbarStore.remove(tab)
       },
     },
     {
       label: '关闭其他标签',
       icon: 'i-ri-close-large-line',
       click: () => {
+        const removeList = tabbarStore.list.filter(item => item.fullPath !== tab.fullPath)
+        removeList.forEach((item) => {
+          tabbarStore.remove(item)
+        })
       },
     },
     {
       label: '关闭左侧标签',
       icon: 'i-ri-expand-left-line',
       click: () => {
+        const tabIndex = tabbarStore.list.findIndex(item => item.fullPath === tab.fullPath)
+        const removeList = tabbarStore.list.slice(0, tabIndex)
+        removeList.forEach((item) => {
+          tabbarStore.remove(item)
+        })
       },
     },
     {
       label: '关闭右侧标签',
       icon: 'i-ri-expand-right-line',
       click: () => {
+        const tabIndex = tabbarStore.list.findIndex(item => item.fullPath === tab.fullPath)
+        const removeList = tabbarStore.list.slice(tabIndex + 1)
+        removeList.forEach((item) => {
+          tabbarStore.remove(item)
+        })
       },
     },
   ]
@@ -80,7 +104,7 @@ function contextMenu(tab: any) {
         :menu="contextMenu(tab)"
         class="tab-item text-basic-10 px-2 border border-transparent rounded flex flex-none gap-1 h-full w-[150px] cursor-pointer select-none transition-colors items-center relative hover:bg-basic-2 dark:hover:bg-basic-2"
         :class="{
-          '!bg-basic !dark:bg-basic-3 !border-basic-2 !dark:border-basic-4 !text-basic-20': route.fullPath === tab.fullPath,
+          '!bg-basic !dark:bg-basic-3 !border-basic-2 !dark:border-basic-4 !text-basic-20': activeTab === tab.fullPath,
         }"
         @click="router.push(tab.fullPath)"
       >
