@@ -43,6 +43,7 @@ onMounted(() => {
 })
 
 function contextMenu(tab: any) {
+  const tabIndex = tabbarStore.list.findIndex(item => item.fullPath === tab.fullPath)
   return [
     {
       label: '重新加载',
@@ -55,6 +56,7 @@ function contextMenu(tab: any) {
     {
       label: '关闭标签',
       icon: 'i-ri-close-large-line',
+      disabled: tabbarStore.list.length <= 1,
       click: () => {
         tabbarStore.remove(tab)
       },
@@ -62,6 +64,7 @@ function contextMenu(tab: any) {
     {
       label: '关闭其他标签',
       icon: 'i-ri-close-large-line',
+      disabled: tabbarStore.list.length <= 1,
       click: () => {
         const removeList = tabbarStore.list.filter(item => item.fullPath !== tab.fullPath)
         removeList.forEach((item) => {
@@ -72,8 +75,8 @@ function contextMenu(tab: any) {
     {
       label: '关闭左侧标签',
       icon: 'i-ri-expand-left-line',
+      disabled: tabIndex <= 0,
       click: () => {
-        const tabIndex = tabbarStore.list.findIndex(item => item.fullPath === tab.fullPath)
         const removeList = tabbarStore.list.slice(0, tabIndex)
         removeList.forEach((item) => {
           tabbarStore.remove(item)
@@ -82,9 +85,9 @@ function contextMenu(tab: any) {
     },
     {
       label: '关闭右侧标签',
+      disabled: tabIndex >= tabbarStore.list.length - 1,
       icon: 'i-ri-expand-right-line',
       click: () => {
-        const tabIndex = tabbarStore.list.findIndex(item => item.fullPath === tab.fullPath)
         const removeList = tabbarStore.list.slice(tabIndex + 1)
         removeList.forEach((item) => {
           tabbarStore.remove(item)
