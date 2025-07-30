@@ -17,16 +17,16 @@ function onScroll({ arrivedState }: { arrivedState: UseScrollReturn['arrivedStat
 
 <template>
   <div class="flex flex-col h-[100vh] w-[100vw] relative">
-    <div class="border-b border-basic-2 h-[60px] w-full transition-colors">
+    <div class="border-b border-basic-2 h-[60px] w-full transition-colors dark:border-basic-4">
       <Header />
     </div>
     <div class="flex flex-1 overflow-hidden">
-      <div class="border-r border-basic-2 flex-none h-[100%] w-[250px] transition-colors">
+      <div class="border-r border-basic-2 flex-none h-[100%] w-[250px] transition-colors dark:border-basic-4">
         <Sidebar />
       </div>
       <div class="bg-basic-1 flex flex-auto flex-col w-0 transition-colors dark:bg-basic">
         <div
-          class="tabbar-container py-1 border-b border-basic-2 h-[48px] transition-colors"
+          class="tabbar-container py-1 border-b border-basic-2 h-[48px] transition-colors dark:border-basic-4"
           :class="{ mask: !isTop }"
         >
           <Tabbar />
@@ -70,7 +70,7 @@ function onScroll({ arrivedState }: { arrivedState: UseScrollReturn['arrivedStat
     height: 50px;
     pointer-events: none;
     content: "";
-    background-image: linear-gradient(0deg, transparent, var(--basic-1));
+    background-image: linear-gradient(0deg, transparent, var(--basic-3));
     opacity: 0;
     transition: opacity 0.3s;
   }

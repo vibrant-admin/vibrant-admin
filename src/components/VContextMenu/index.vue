@@ -15,7 +15,7 @@ function onBeforeEnter(el: any) {
 }
 function onEnter(el: any) {
   el.style.height = 'auto'
-  const h = el.clientHeight
+  const h = el.offsetHeight
   el.style.height = 0
   requestAnimationFrame(() => {
     el.style.height = `${h}px`
@@ -40,12 +40,12 @@ function onAfterEnter(el: any) {
               left: `${x}px`,
               top: `${y}px`,
             }"
-            class="bg-background border-border p-1 border rounded rounded-lg shadow-xs fixed overflow-hidden"
+            class="p-1 border border-basic-2 rounded rounded-lg bg-basic shadow-xs fixed overflow-hidden dark:border-basic-4 dark:bg-basic-1"
           >
             <div
               v-for="item in menu" :key="item.label" :class="{
                 'text-secondary-foreground': item.disabled,
-              }" class="hover:bg-secondary text-sm leading-none px-3 py-2 rounded flex gap-1 cursor-pointer items-center" @click.stop="item.click"
+              }" class="text-sm leading-none px-3 py-2 rounded flex gap-1 cursor-pointer items-center hover:bg-basic-1 dark:hover:bg-basic-3" @click.stop="item.click"
             >
               <VIcon v-if="item.icon" :name="item.icon" />
               <span>{{ item.label }}</span>

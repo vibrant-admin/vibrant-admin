@@ -12,7 +12,7 @@ function onAdd() {
 <template>
   <ElPopover placement="bottom" trigger="click" :width="300">
     <template #reference>
-      <div class="text-lg font-bold p-2 rounded flex cursor-pointer items-center hover:bg-basic-1">
+      <div class="text-lg font-bold p-2 rounded flex cursor-pointer items-center hover:bg-basic-1 dark:hover:bg-basic-3">
         <VIcon v-if="!favoritesStore.isAdded(route.fullPath)" name="i-ri-star-line" />
         <VIcon v-else name="i-ri-star-fill" />
       </div>

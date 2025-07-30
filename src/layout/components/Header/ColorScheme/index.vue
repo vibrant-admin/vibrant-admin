@@ -1,47 +1,68 @@
 <script setup lang="ts">
-import type { Settings } from '#/global'
-
 defineOptions({
   name: 'ColorScheme',
 })
 const settingStore = useSettingStore()
 
-const colorSchemes: {
-  name: string
-  value: Settings.app['colorScheme']
-  icon: string
-}[] = [
-  { value: 'light', name: '亮色方案', icon: 'i-ri-sun-line' },
-  { value: 'dark', name: '暗色方案', icon: 'i-ri-moon-clear-line' },
-  { value: 'OS', name: '跟随系统', icon: 'i-ri-contrast-line' },
-]
+async function toggleColorScheme(event: MouseEvent) {
+  const transition = document.startViewTransition(async () => {
+    settingStore.setColorScheme(settingStore.colorScheme === 'light' ? 'dark' : settingStore.colorScheme === 'dark' ? 'OS' : 'light')
+    await nextTick()
+  })
 
-const currentScheme = computed(() => {
-  return colorSchemes.find(scheme => scheme.value === settingStore.colorScheme)
-})
+  transition.ready.then(() => {
+    const { clientX, clientY } = event
+    const radius = Math.hypot(
+      Math.max(clientX, innerWidth - clientX),
+      Math.max(clientY, innerHeight - clientY),
+    )
+    const clipPath = [
+      `circle(0% at ${clientX}px ${clientY}px)`,
+      `circle(${radius}px at ${clientX}px ${clientY}px)`,
+    ]
+
+    document.documentElement.animate(
+      { clipPath: settingStore.isDark ? clipPath.reverse() : clipPath },
+      {
+        duration: 300,
+        easing: 'ease-in-out',
+        pseudoElement: settingStore.isDark
+          ? '::view-transition-old(root)'
+          : '::view-transition-new(root)',
+      },
+    )
+  })
+}
 </script>
 
 <template>
-  <ElDropdown trigger="click">
-    <div class="text-lg text-basic-20 font-bold p-2 rounded flex cursor-pointer items-center hover:bg-basic-1">
-      <VIcon :name="currentScheme!.icon" />
-    </div>
-    <template #dropdown>
-      <ElDropdownMenu>
-        <ElDropdownItem
-          v-for="scheme in colorSchemes" :key="scheme.value" @click="settingStore.setColorScheme(scheme.value)"
-        >
-          <div
-            class="flex items-center"
-            :class="{
-              'text-primary': scheme.value === settingStore.colorScheme,
-            }"
-          >
-            <VIcon :name="scheme.icon" class="text-lg" />
-            {{ scheme.name }}
-          </div>
-        </ElDropdownItem>
-      </ElDropdownMenu>
-    </template>
-  </ElDropdown>
+  <div class="text-lg text-basic-20 font-bold p-2 rounded flex cursor-pointer items-center hover:bg-basic-1 dark:hover:bg-basic-3" @click="toggleColorScheme($event)">
+    <VIcon :name="settingStore.colorScheme === 'light' ? 'i-ri-sun-line' : settingStore.colorScheme === 'dark' ? 'i-ri-moon-clear-line' : 'i-ri-contrast-line'" />
+  </div>
 </template>
+
+<style>
+::view-transition-old(root),
+::view-transition-new(root) {
+  mix-blend-mode: normal;
+  animation: none;
+}
+
+::view-transition-old(root) {
+  z-index: 0;
+}
+
+::view-transition-new(root) {
+  z-index: 1;
+}
+
+.dark {
+  &::view-transition-old(root) {
+    z-index: 1;
+  }
+
+  &::view-transition-new(root) {
+    z-index: 0;
+  }
+}
+</style>

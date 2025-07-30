@@ -54,6 +54,10 @@ export const useSettingStore = defineStore('setting', () => {
     }
   }, { immediate: true })
 
+  const isDark = computed(() => {
+    return settings.value.app.colorScheme === 'dark' || (settings.value.app.colorScheme === 'OS' && colorSchemeMatch.matches)
+  })
+
   // 主题变更
   watch(() => settings.value.app.theme, () => {
     document.documentElement.setAttribute('data-theme', settings.value.app.theme)
@@ -65,5 +69,6 @@ export const useSettingStore = defineStore('setting', () => {
     setColorScheme,
     theme,
     setTheme,
+    isDark,
   }
 })

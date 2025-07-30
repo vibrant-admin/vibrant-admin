@@ -18,7 +18,7 @@ function onClick() {
 <template>
   <div class="group breadcrumb-item flex items-center">
     <span
-      class="text text-sm px-4 py-1.5 bg-basic-1 opacity-60 flex items-center group-last:opacity-100"
+      class="text text-sm px-4 py-1.5 bg-basic-1 opacity-70 flex items-center dark:bg-basic-3 group-last:opacity-100"
       :class="{
         'cursor-pointer transition-opacity hover-opacity-100': !!props.to,
       }" @click="onClick"
