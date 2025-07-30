@@ -10,7 +10,7 @@ import { defineConfig } from 'vite'
 import AppLoading from 'vite-plugin-app-loading'
 import { compression } from 'vite-plugin-compression2'
 import { envParse } from 'vite-plugin-env-parse'
-import vueDevTools from 'vite-plugin-vue-devtools'
+import VueDevTools from 'vite-plugin-vue-devtools'
 import svgLoader from 'vite-svg-loader'
 
 export default defineConfig({
@@ -19,9 +19,9 @@ export default defineConfig({
     legacy({
       targets: ['defaults', 'not IE 11'],
     }),
+    VueDevTools(),
     vue(),
     vueJsx(),
-    vueDevTools(),
     UnoCSS(),
     AutoImport({
       resolvers: [ElementPlusResolver()],
