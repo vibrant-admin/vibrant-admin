@@ -8,7 +8,7 @@
     "build": "run-p lint \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
-    "lint": "run-p lint:tsc lint:eslint lint:stylelint",
+    "lint": "run-p lint:*",
     "lint:tsc": "vue-tsc --build",
     "lint:eslint": "eslint . --fix",
     "lint:stylelint": "stylelint \"src/**/*.{css,vue}\" --fix",
