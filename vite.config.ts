@@ -10,18 +10,14 @@ import { defineConfig } from 'vite'
 import AppLoading from 'vite-plugin-app-loading'
 import { compression } from 'vite-plugin-compression2'
 import { envParse } from 'vite-plugin-env-parse'
-import VueDevTools from 'vite-plugin-vue-devtools'
+import vueDevTools from 'vite-plugin-vue-devtools'
 import svgLoader from 'vite-svg-loader'
 
 export default defineConfig({
   plugins: [
-    // https://github.com/vitejs/vite/tree/main/packages/plugin-legacy
-    legacy({
-      targets: ['defaults', 'not IE 11'],
-    }),
-    VueDevTools(),
     vue(),
     vueJsx(),
+    vueDevTools(),
     UnoCSS(),
     AutoImport({
       resolvers: [ElementPlusResolver()],
@@ -43,11 +39,15 @@ export default defineConfig({
     envParse({
       dtsPath: 'src/types/env.d.ts',
     }),
+    AppLoading('loading.html'),
     // https://github.com/nonzzz/vite-plugin-compression
     compression({
       algorithms: ['gzip'],
     }),
-    AppLoading('loading.html'),
+    // https://github.com/vitejs/vite/tree/main/packages/plugin-legacy
+    legacy({
+      targets: ['defaults', 'not IE 11'],
+    }),
   ],
   resolve: {
     alias: {

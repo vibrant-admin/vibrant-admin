@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineOptions({
-  name: 'FaCheckUpdates',
+  name: 'VCheckUpdate',
 })
 
 const visible = ref(false)
