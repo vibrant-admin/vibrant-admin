@@ -1,6 +1,7 @@
 import { entriesToCss, toArray } from '@unocss/core'
 import presetIcons from '@unocss/preset-icons'
-import { defineConfig, presetAttributify, presetWind4, transformerAttributifyJsx, transformerDirectives, transformerVariantGroup } from 'unocss'
+import presetLegacyCompat from '@unocss/preset-legacy-compat'
+import { defineConfig, presetAttributify, presetWind3, transformerAttributifyJsx, transformerDirectives, transformerVariantGroup } from 'unocss'
 import themes from './src/assets/themes'
 
 export default defineConfig({
@@ -13,17 +14,18 @@ export default defineConfig({
     },
   },
   presets: [
-    presetWind4({
-      preflights: {
-        reset: true,
-      },
-    }),
+    presetWind3(),
     // 支持属性模式
     presetAttributify(),
     // 支持图标字体
     presetIcons({
       scale: 1.2,
       warn: true,
+    }),
+    presetLegacyCompat({
+      // options
+      commaStyleColorFunction: true,
+      legacyColorSpace: true,
     }),
   ],
   preflights: [
