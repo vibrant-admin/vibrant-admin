@@ -3,8 +3,9 @@
 <template>
   <h1>You did it!</h1>
   <p>
+    1
     Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
+    documentationfdsafsda
   </p>
 </template>
 
