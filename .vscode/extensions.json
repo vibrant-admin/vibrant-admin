@@ -1,10 +1,8 @@
 {
   "recommendations": [
-    "EditorConfig.EditorConfig",
-    "mikestead.dotenv",
     "Vue.volar",
     "dbaeumer.vscode-eslint",
-    "stylelint.vscode-stylelint",
-    "antfu.unocss"
+    "EditorConfig.EditorConfig",
+    "oxc.oxc-vscode"
   ]
 }
