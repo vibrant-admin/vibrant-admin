@@ -100,12 +100,12 @@ function contextMenu(tab: any) {
 
 <template>
   <VXScroll>
-    <TransitionGroup ref="containerRef" tag="div" class="mx-1 flex gap-1 h-full select-none" :name="!isDragging ? 'tabbar' : undefined">
+    <TransitionGroup ref="containerRef" tag="div" class="mx-1 h-full flex select-none gap-1" :name="!isDragging ? 'tabbar' : undefined">
       <VContextMenu
         v-for="tab in tabbarStore.list"
         :key="tab.fullPath"
         :menu="contextMenu(tab)"
-        class="tab-item text-basic-10 px-2 border border-transparent rounded flex flex-none gap-1 h-full w-[150px] cursor-pointer select-none transition-colors items-center relative hover:bg-basic-2 dark:hover:bg-basic-2"
+        class="tab-item relative h-full w-[150px] flex flex-none cursor-pointer select-none items-center gap-1 border border-transparent rounded px-2 text-basic-10 transition-colors hover:bg-basic-2 dark:hover:bg-basic-2"
         :class="{
           '!bg-basic !dark:bg-basic-3 !border-basic-2 !dark:border-basic-4 !text-basic-20': activeTab === tab.fullPath,
         }"
@@ -115,11 +115,11 @@ function contextMenu(tab: any) {
         <div
           :class="{
             'me-5': tabbarStore.list.length > 1,
-          }" class="text-sm me-1 flex-1 text-nowrap [mask-image:linear-gradient(to_right,#000_calc(100%-20px),transparent)] overflow-hidden"
+          }" class="[mask-image:linear-gradient(to_right,#000_calc(100%-20px),transparent)] me-1 flex-1 overflow-hidden text-nowrap text-sm"
         >
           {{ tab.title }}
         </div>
-        <div v-show="tabbarStore.list.length > 1" class="text-basic-20 flex h-[16px] w-[16px] transition-color items-center right-2 justify-center absolute hover:text-primary" @click.stop="tabbarStore.remove(tab)">
+        <div v-show="tabbarStore.list.length > 1" class="absolute right-2 h-[16px] w-[16px] flex items-center justify-center text-basic-20 transition-color hover:text-primary" @click.stop="tabbarStore.remove(tab)">
           <VIcon name="i-ri-close-line" />
         </div>
       </VContextMenu>

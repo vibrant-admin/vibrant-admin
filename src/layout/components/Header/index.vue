@@ -19,14 +19,14 @@ const hasBreadcrumb = computed(() => wrapperWidth.value > 800)
 
 <template>
   <header v-resize-observer="onResizeObserver">
-    <div class="flex gap-5 items-center">
+    <div class="flex items-center gap-5">
       <VIcon name="logo" class="size-3em" />
       <h1 class="text-2xl text-basic-20 font-bold transition-color">
         {{ title }}
       </h1>
       <Breadcrumb v-if="hasBreadcrumb" />
     </div>
-    <div class="text-basic-20 flex gap-3 transition-color items-center">
+    <div class="flex items-center gap-3 text-basic-20 transition-color">
       <Favorites />
       <Notification />
       <Fullscreen />

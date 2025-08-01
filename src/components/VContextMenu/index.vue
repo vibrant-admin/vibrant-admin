@@ -50,12 +50,12 @@ function onClick(item: MenuItem) {
               left: `${x}px`,
               top: `${y}px`,
             }"
-            class="text-basic-20 p-1 border border-basic-2 rounded rounded-lg bg-basic shadow-xs fixed overflow-hidden dark:border-basic-4 dark:bg-basic-1"
+            class="shadow-xs fixed overflow-hidden border border-basic-2 rounded rounded-lg bg-basic p-1 text-basic-20 dark:border-basic-4 dark:bg-basic-1"
           >
             <div
               v-for="item in menu" :key="item.label" :class="{
                 '!text-basic-8 !hover:bg-basic pointer-events-none': item.disabled,
-              }" class="text-sm leading-none px-3 py-2 rounded flex gap-1 cursor-pointer items-center hover:bg-basic-1 dark:hover:bg-basic-3" @click.stop="onClick(item)"
+              }" class="flex cursor-pointer items-center gap-1 rounded px-3 py-2 text-sm leading-none hover:bg-basic-1 dark:hover:bg-basic-3" @click.stop="onClick(item)"
             >
               <VIcon v-if="item.icon" :name="item.icon" />
               <span>{{ item.label }}</span>

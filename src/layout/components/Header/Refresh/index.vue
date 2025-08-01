@@ -11,7 +11,7 @@ function handleRefresh() {
 </script>
 
 <template>
-  <div class="text-lg font-bold p-2 rounded flex cursor-pointer items-center hover:bg-basic-1 dark:hover:bg-basic-3" @click.exact="handleRefresh">
+  <div class="flex cursor-pointer items-center rounded p-2 text-lg font-bold hover:bg-basic-1 dark:hover:bg-basic-3" @click.exact="handleRefresh">
     <VIcon
       name="i-ri-refresh-line" :class="{
         animation: isAnimating,

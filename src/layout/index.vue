@@ -16,22 +16,22 @@ function onScroll({ arrivedState }: { arrivedState: UseScrollReturn['arrivedStat
 </script>
 
 <template>
-  <div class="flex flex-col h-[100vh] w-[100vw] relative">
-    <div class="border-b border-basic-2 h-[60px] w-full transition-colors dark:border-basic-4">
+  <div class="relative h-[100vh] w-[100vw] flex flex-col">
+    <div class="h-[60px] w-full border-b border-basic-2 transition-colors dark:border-basic-4">
       <Header />
     </div>
     <div class="flex flex-1 overflow-hidden">
-      <div class="border-r border-basic-2 flex-none h-[100%] w-[250px] transition-colors dark:border-basic-4">
+      <div class="h-[100%] w-[250px] flex-none border-r border-basic-2 transition-colors dark:border-basic-4">
         <Sidebar />
       </div>
-      <div class="bg-basic-1 flex flex-auto flex-col w-0 transition-colors dark:bg-basic">
+      <div class="w-0 flex flex-auto flex-col bg-basic-1 transition-colors dark:bg-basic">
         <div
-          class="tabbar-container py-1 border-b border-basic-2 h-[48px] transition-colors dark:border-basic-4"
+          class="tabbar-container h-[48px] border-b border-basic-2 py-1 transition-colors dark:border-basic-4"
           :class="{ mask: !isTop }"
         >
           <Tabbar />
         </div>
-        <div v-scroll="onScroll" class="p-3 flex-1 relative overflow-auto">
+        <div v-scroll="onScroll" class="relative flex-1 overflow-auto p-3">
           <RouterView v-slot="{ Component }">
             <Transition name="main" mode="out-in">
               <KeepAlive :include="keepAliveStore.list">

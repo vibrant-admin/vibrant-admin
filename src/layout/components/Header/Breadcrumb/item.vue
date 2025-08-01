@@ -18,7 +18,7 @@ function onClick() {
 <template>
   <div class="group breadcrumb-item flex items-center">
     <span
-      class="text group-last:dark text-sm text-basic-15 px-4 py-1.5 bg-basic-1 flex transition-colors items-center group-last:(text-basic-20 bg-basic-2) dark:bg-basic-3 dark:group-last:bg-basic-4"
+      class="text group-last:dark flex items-center bg-basic-1 px-4 py-1.5 text-sm text-basic-15 transition-colors dark:bg-basic-3 group-last:(bg-basic-2 text-basic-20) dark:group-last:bg-basic-4"
       :class="{
         'cursor-pointer hover:bg-basic-2 dark:hover:bg-basic-4': !!props.to,
       }" @click="onClick"

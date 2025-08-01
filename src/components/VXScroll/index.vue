@@ -37,7 +37,7 @@ function onScroll({ arrivedState }: { arrivedState: UseScrollReturn['arrivedStat
 <template>
   <div
     v-resize-observer="onResizeObserver"
-    class="v-x-scroll h-full w-full relative" :class="{
+    class="v-x-scroll relative h-full w-full" :class="{
       'mask-l': isMaskLeft,
       'mask-r': isMaskRight,
     }" :style="{
@@ -46,7 +46,7 @@ function onScroll({ arrivedState }: { arrivedState: UseScrollReturn['arrivedStat
     }"
   >
     <div v-scroll="onScroll" class="v-scroll h-[var(--width)] w-[var(--height)] transform-origin-tl transform-translate-y-[var(--height)] transform-rotate--90 overflow-x-hidden overflow-y-auto">
-      <div v-resize-observer="onContentResizeObserver" class="h-[var(--height)] w-[var(--width)] transform-origin-tl transform-translate-x-[var(--height)] transform-rotate-90 [width:max-content]">
+      <div v-resize-observer="onContentResizeObserver" class="[width:max-content] h-[var(--height)] w-[var(--width)] transform-origin-tl transform-translate-x-[var(--height)] transform-rotate-90">
         <slot />
       </div>
     </div>
