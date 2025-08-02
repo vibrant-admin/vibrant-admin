@@ -1,31 +1,17 @@
+import { loadingFadeOut } from 'virtual:app-loading'
 import { createRouter, createWebHistory } from 'vue-router'
+import setupGuards from './guard'
+import { constantRoutes } from './routes'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: () => import('@/layout/index.vue'),
-      meta: {
-        title: '首页',
-        icon: 'home',
-        order: 1,
-      },
-      children: [
-        {
-          path: 'home',
-          name: 'homeIndex',
-          component: () => import('@/views/home/index.vue'),
-          meta: {
-            title: '首页',
-            icon: 'home',
-            order: 1,
-          },
-        },
-      ],
-    },
-  ],
+  routes: constantRoutes,
+})
+
+setupGuards(router)
+
+router.isReady().then(() => {
+  loadingFadeOut()
 })
 
 export default router
