@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const title = import.meta.env.VITE_APP_TITLE
+import VaProvider from '@/components/VaProvider/index.vue'
 </script>
 
 <template>
-  <div class="bg-main">
-    {{ title }}
-  </div>
+  <VaProvider>
+    <RouterView />
+  </VaProvider>
 </template>

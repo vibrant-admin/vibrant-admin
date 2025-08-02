@@ -1,16 +1,13 @@
 import { entriesToCss } from '@unocss/core'
 import presetLegacyCompat from '@unocss/preset-legacy-compat'
-import { defineConfig, presetAttributify, presetIcons, presetWind3, transformerAttributifyJsx } from 'unocss'
+import { defineConfig, presetIcons, presetWind3 } from 'unocss'
 import themes from './src/configs/themes'
 
 export default defineConfig({
   presets: [
     presetWind3(),
-    // 属性化
-    presetAttributify(),
     // 图标
     presetIcons({
-      scale: 1.2,
       warn: true,
       extraProperties: {
         display: 'block',
@@ -21,10 +18,6 @@ export default defineConfig({
       commaStyleColorFunction: true,
       legacyColorSpace: true,
     }),
-  ],
-  transformers: [
-    // JSX 属性化
-    transformerAttributifyJsx(),
   ],
   preflights: [
     {
@@ -52,4 +45,7 @@ export default defineConfig({
       tertiary: 'hsl(var(--color-tertiary))',
     },
   },
+  configDeps: [
+    'src/configs/themes.ts',
+  ],
 })
