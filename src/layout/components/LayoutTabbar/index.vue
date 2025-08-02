@@ -13,6 +13,7 @@ defineExpose({
   position: fixed;
   top: var(--layout-header-height);
   left: var(--layout-sidebar-width);
+  z-index: 1000;
   width: calc(100% - var(--layout-sidebar-width));
   height: var(--layout-tabbar-height);
   background-color: var(--layout-tabbar-background-color);

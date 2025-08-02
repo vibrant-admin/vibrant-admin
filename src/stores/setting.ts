@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 export const useSettingStore = defineStore('setting', () => {
   const settings = ref<RecursiveRequired<Settings.all>>({
     app: {
-      colorScheme: 'os',
+      colorScheme: 'light',
       theme: 'default',
     },
   })
@@ -31,12 +31,13 @@ export const useSettingStore = defineStore('setting', () => {
   })
 
   // 更新主题
-  function updateTheme() {
+  async function updateTheme() {
     let colorScheme = settings.value.app.colorScheme
     if (colorScheme === 'os') {
       colorScheme = prefersColorScheme.matches ? 'dark' : 'light'
     }
     currentColorScheme.value = colorScheme
+    document.documentElement.classList.add('no-animation')
     switch (colorScheme) {
       case 'light':
         document.documentElement.classList.remove('dark')
@@ -47,6 +48,9 @@ export const useSettingStore = defineStore('setting', () => {
         document.documentElement.setAttribute('data-theme', settings.value.app.theme)
         break
     }
+    requestAnimationFrame(() => {
+      document.documentElement.classList.remove('no-animation')
+    })
   }
 
   watch([

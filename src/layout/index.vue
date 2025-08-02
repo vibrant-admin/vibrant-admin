@@ -30,7 +30,6 @@ import LayoutTabbar from './components/LayoutTabbar/index.vue'
   --layout-tabbar-background-color: hsl(var(--color-secondary));
   --layout-tabbar-border-color: hsl(var(--color-secondary-border));
 
-  --layout-main-padding: 20px;
   --layout-main-background-color: hsl(var(--color-secondary));
 }
 </style>
